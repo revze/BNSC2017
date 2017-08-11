@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Indonesia Game Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- This HTML tag is use to include external CSS file -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/font-awesome/css/font-awesome.min.css">
+  </head>
+  <body>
+    <!-- Start game modal section -->
+    <div class="popup" id="popup-game">
+      <div class="popup-inner">
+        <div class="row">
+          <div class="col-s-12 col-m-9 col-9 no-pad">
+            Game Canvas
+          </div>
+          <div class="col-s-12 col-m-3 col-3 gray">
+            <h3>Leaderboard</h3>
+            <ul class="leaderboard">
+              <!-- <li>1. Revando (190)</li>
+              <li>2. Superman (180)</li>
+              <li>3. Batman (170)</li>
+              <li>4. Wonder Woman (160)</li>
+              <li>5. Hulk (150)</li> -->
+            </ul>
+            <div class="loading-text">
+              Please wait...
+            </div>
+          </div>
+        </div>
+        <a class="popup-close" href="#!" onclick="closeModal('popup-game')"><i class="fa fa-close"></i></a>
+      </div>
+    </div>
+    <!-- End game modal section -->
+
+    <!-- Start register modal section -->
+    <div class="popup" id="popup-register">
+      <div class="popup-inner register">
+        <form id="register-form" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-s-12 col-m-12 col-12">
+              <h2 class="form-title">Register to Play</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-s-12 col-m-6 col-6">
+              <input type="text" name="name" placeholder="Name" class="form-control" id="name_register">
+            </div>
+            <div class="col-s-12 col-m-6 col-6">
+              <input type="text" name="username" placeholder="Username" class="form-control" id="username_register">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-s-12 col-m-6 col-6">
+              <input type="email" name="email" placeholder="Email" class="form-control" id="email_register">
+            </div>
+            <div class="col-s-12 col-m-6 col-6">
+              <input type="password" name="password" placeholder="Password" class="form-control" id="password_register">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-s-12 col-m-6 col-6">
+              <input type="date" name="date_birth" placeholder="Date of Birth" class="form-control" id="date_birth_register">
+            </div>
+            <div class="col-s-12 col-m-6 col-6">
+              <input type="text" name="phone_number" placeholder="Phone Number" class="form-control" id="phone_number_register">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-s-12 col-m-12 col-12">
+              <div class="box-upload">
+                <i class="fa fa-photo fa-4x"></i>
+              </div>
+              <div class="box-preview none">
+                <img src="" alt="Image Preview" class="responsive-img">
+              </div>
+              <input type="file" name="photo" id="photo_register" accept="image/*">
+            </div>
+          </div>
+          <div class="captcha">
+            <div class="row">
+              <div class="col-s-12 col-m-12 col-12 pad-bot">
+                <div class="captcha-text">
+                  <img src="" alt="Captcha Image">
+                  <input type="hidden" name="captcha_hash">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-s-12 col-m-12 col-12 captcha-instruction-col">
+                <div class="captcha-instruction">
+                  <span>Type the two words:</span>
+                  <div class="row">
+                    <div class="col-s-12 col-m-9 col-9 no-pad">
+                      <input type="text" class="form-control" name="input_user">
+                    </div>
+                    <div class="col-s-12 col-m-3 col-3 no-pad">
+                      <a href="#!" class="refresh-captcha"><i class="fa fa-refresh"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-s-12 col-m-12 col-12">
+              <button type="submit" class="btn full submit">Register</button>
+              <div class="alert none">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-s-12 col-m-12 col-12">
+              <div class="register-text">Already have an account? <a href="#!" onclick="loginUser()">Login</a>.</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-s-12 col-m-12 col-12 error">
+            </div>
+          </div>
+        </form>
+        <a class="popup-close" onclick="closeModal('popup-register')" href="#!"><i class="fa fa-close"></i></a>
+      </div>
+    </div>
+    <!-- End register modal section -->
+
+    <!-- Start login modal section -->
+    <div class="popup" id="popup-login">
+      <div class="popup-inner login">
+        <form id="login-form">
+          <div class="row">
+            <div class="col-s-12 col-m-12 col-12">
+              <h2 class="form-title">Login to Play</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-s-12 col-m-12 col-12">
+              <input type="text" name="username" placeholder="Username" class="form-control" id="username_login">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-s-12 col-m-12 col-12">
+              <input type="password" name="password" placeholder="Password" class="form-control" id="password_login">
+            </div>
+          </div>
+              <div class="captcha">
+                <div class="row">
+                  <div class="col-s-12 col-m-12 col-12 pad-bot">
+                    <div class="captcha-text">
+                      <img src="" alt="Captcha Image">
+                      <input type="hidden" name="captcha_hash">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-s-12 col-m-12 col-12 captcha-instruction-col">
+                    <div class="captcha-instruction">
+                      <span>Type the two words:</span>
+                      <div class="row">
+                        <div class="col-s-12 col-m-9 col-9 no-pad">
+                          <input type="text" class="form-control" name="input_user">
+                        </div>
+                        <div class="col-s-12 col-m-3 col-3 no-pad">
+                          <a href="#!" class="refresh-captcha"><i class="fa fa-refresh"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <div class="row">
+            <div class="col-s-12 col-m-12 col-12">
+              <button type="submit" class="btn full submit">Login</button>
+              <div class="alert none">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-s-12 col-m-12 col-12">
+              <div class="register-text">Don't have an account? <a href="#!" onclick="registerUser()">Register</a>.</div>
+            </div>
+          </div>
+        </form>
+        <a class="popup-close" onclick="closeModal('popup-login')" href="#!"><i class="fa fa-close"></i></a>
+      </div>
+    </div>
+    <!-- End login modal section -->
+
+    <!-- Start navigation menu section -->
+    <nav>
+      <div class="nav-top-container">
+        <div class="left">
+          <ul>
+            <li><a href="javascript:void(0)" class="toolbar"><i class="fa fa-bars"></i></a></li>
+            <li><a href="#!" class="logo">Logo</a></li>
+          </ul>
+        </div>
+        <div class="search-wrapper">
+          <input type="text" placeholder="Find the game you want">
+          <i class="fa fa-search"></i>
+        </div>
+        <div class="right">
+          <ul>
+            <li id="search"><a href="javascript:void(0)" class="search"><i class="fa fa-search"></i></a></li>
+            <li class="register-menu"><a href="#!" class="auth">Login</a></li>
+            <li class="login-menu"><a href="register.html" class="auth">Register</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End navigation menu section -->
+
+    <!-- Start side navigation menu section -->
+    <aside>
+      <div class="logo">
+        <img src="assets/img/logo.png" alt="Logo">
+      </div>
+      <div class="search">
+        <input type="text" placeholder="Search Game">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="menu">
+        <ul>
+          <li><a href="#!"><i class="fa fa-home"></i>Home</a></li>
+          <li><a href="#!"><i class="fa fa-rocket"></i>Banner</a></li>
+          <li><a href="#!"><i class="fa fa-image"></i>Gallery</a></li>
+          <li><a href="#!"><i class="fa fa-globe"></i>About</a></li>
+        </ul>
+      </div>
+    </aside>
+    <main>
+      <section id="banner">
+        <div class="container">
+          <div class="row">
+            <div class="col-s-12 col-m-8 col-8 no-pad">
+              <div class="box-main endless-runner">
+                <div class="row">
+                  <div class="col-s-12 col-m-1 col-5 main">
+                    <h2 id="banner-title">Endless Runner</h2>
+                    <p id="banner-desc">
+                      A game which you move your character from one side of the screen to the other endlessly.
+                    </p>
+                    <a href="#!" class="btn" onclick="playGame('Endless Runner')">Play Game</a>
+                  </div>
+                  <div class="col-s-12 col-m-12 col-7">
+                    <div class="row second">
+                      <div class="col-s-6 col-m-6 col-6 no-pad">
+                        <h2 id="banner-title-second">Endless Runner</h2>
+                      </div>
+                      <div class="col-s-6 col-m-6 col-6 no-pad">
+                        <div class="right-align">
+                          <a href="#!" class="btn" onclick="playGame('Endless Runner')">Play Game</a>
+                        </div>
+                      </div>
+                    </div>
+                    <img src="assets/img/banner1.png" alt="Banner 1" id="banner-image">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-s-12 col-m-4 col-4 no-pad">
+              <div class="row">
+                <div class="col-s-12 col-m-12 col-12 no-pad">
+                  <div class="box-banner">
+                    <img src="assets/img/tetris.jpg" alt="Tetris">
+                    <div class="overlay">
+                      <div class="content">
+                        <a href="#!" onclick="changeMainBanner('Tetris','#2c0186','Is a tile-matching puzzle video game, originally designed and programmed by Russian game designer Alexey Pajitnov.','#fff','assets/img/tetris.jpg')"><h2>Tetris</h2></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-s-12 col-m-12 col-12 no-pad">
+                  <div class="box-banner">
+                    <img src="assets/img/banner1.png  " alt="Endless Runner">
+                    <div class="overlay">
+                      <div class="content">
+                        <a href="#!" onclick="changeMainBanner('Endless Runner','#bbd0ce','A game which you move your character from one side of the screen to the other endlessly.','#212121','assets/img/banner1.png')"><h2>Endless Runner</h2></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End side navigation menu section -->
+
+      <!-- Start gallery section -->
+      <section id="gallery" class="gray">
+        <div class="container gallery">
+          <div class="row">
+            <div class="col-s-12 col-m-12 col-12">
+              <h2 class="center">Explore Our Gallery</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-s-12 col-m-4 col-4">
+              <div class="img-box">
+                <img src="assets/img/startrek.jpg" alt="Star Trek">
+                <div class="overlay">
+                  <div class="content">
+                    <div class="title">
+                      <a href="#!">Star Trek: Bridge Crew</a>
+                    </div>
+                    <a href="#!" class="learn-more">Learn More</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-s-12 col-m-4 col-4">
+              <div class="img-box">
+                <img src="assets/img/PES2017.jpg" alt="Pro Evolution Soccer 2017">
+                <div class="overlay">
+                  <div class="content">
+                    <div class="title">
+                      <a href="#!">Pro Evolution Soccer 2017</a>
+                    </div>
+                    <a href="#!" class="learn-more">Learn More</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-s-12 col-m-4 col-4">
+              <div class="img-box">
+                <img src="assets/img/MOBA.jpg" alt="Mobile Legends">
+                <div class="overlay">
+                  <div class="content">
+                    <div class="title">
+                      <a href="#!">Mobile Legends</a>
+                    </div>
+                    <a href="#!" class="learn-more">Learn More</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-s-12 col-m-4 col-4">
+              <div class="video-box">
+                <img src="assets/img/POKEMONGO.jpg" alt="Pokemon Go">
+                <div class="overlay">
+                  <div class="content">
+                    <a href="#!" class="video-player"><i class="fa fa-play"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="video-title">
+                <a href="#!">Pokemon Go</a>
+              </div>
+            </div>
+            <div class="col-s-12 col-m-4 col-4">
+              <div class="video-box">
+                <img src="assets/img/ROBO-RECALL.jpg" alt="Robo Recall">
+                <div class="overlay">
+                  <div class="content">
+                    <a href="#!" class="video-player"><i class="fa fa-play"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="video-title">
+                <a href="#!">Robo Recall</a>
+              </div>
+            </div>
+            <div class="col-s-12 col-m-4 col-4">
+              <div class="video-box">
+                <img src="assets/img/SIMS4.jpg" alt="The Sims 4">
+                <div class="overlay">
+                  <div class="content">
+                    <a href="#!" class="video-player"><i class="fa fa-play"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="video-title">
+                <a href="#!">The Sims 4</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End gallery section -->
+
+      <!-- Start about section -->
+      <section id="about">
+        <div class="container">
+          <div class="row">
+            <div class="col-s-12 col-m-8 col-8">
+              <div class="row">
+                <div class="col-s-12 col-m-12 col-12">
+                  <h2>Indonesia Game Portal</h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-s-12 col-m-12 col-12">
+                  <div class="desc">
+                    Is an Indonesia language game portal that reviews the news and interesting stuff about the game world both in and outside Indonesia.
+                  </div>
+                  <a href="#!" class="learn-more">Learn More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-s-12 col-m-4 col-4">
+              <div class="frame">
+                <img src="assets/img/logo.png" alt="Logo">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End about section -->
+
+      <!-- Start footer section -->
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-s-12 col-m-12 col-12">
+              <div class="left">
+                <div class="copyright">
+                  Copyright &copy; 2017 Indonesia Game Portal. Designed by <a href="#!">Revando</a>.
+                </div>
+              </div>
+              <div class="right social-media">
+                <a href="#!"><img src="assets/img/fb.png" alt="Facebook"></a>
+                <a href="#!"><img src="assets/img/yt.png" alt="Facebook"></a>
+                <a href="#!"><img src="assets/img/ig.png" alt="Instagram"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- End footer section -->
+
+    </main>
+
+    <!-- This HTML tag is use to include external Javascript file -->
+    <script src="assets/js/jquery.min.js" charset="utf-8"></script>
+    <script src="assets/js/main.js" charset="utf-8"></script>
+
+    <!-- Use only for final result -->
+    <script src="assets/js/result.js" charset="utf-8"></script>
+    <script src="assets/js/vue.min.js" charset="utf-8"></script>
+    <!-- Use only for final result -->
+  </body>
+</html>
