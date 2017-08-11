@@ -3,6 +3,14 @@ let btnStart;
 let startText;
 
 let background;
+let bgForest;
+let bgForest2;
+let bgBottom;
+let bgBottom2;
+let bgBottom3;
+let bgTop;
+let bgTop2;
+let bgTop3;
 let dragon;
 let scoreText;
 let lifeText;
@@ -26,9 +34,17 @@ function initGame() {
 function startGame() {
   // gameArea.start();
   background = new drawBackground(480,270,"gray",0,0);
+  bgForest = new drawBackground(480,270,"img/bg_back_A.png",0,0,'background');
+  bgForest2 = new drawBackground(480,270,"img/bg_back_B.png",0,0,'background');
+  bgBottom = new drawBackground(480,270,"img/bg_front_ground_A.png",0,0,'background');
+  bgBottom2 = new drawBackground(480,270,"img/bg_front_ground_B.png",0,0,'background');
+  bgBottom3 = new drawBackground(480,270,"img/bg_front_ground_C.png",0,0,'background');
+  bgTop = new drawBackground(480,270,"img/bg_superfront_A.png",0,0,'background');
+  bgTop2 = new drawBackground(480,270,"img/bg_superfront_B.png",0,0,'background');
+  bgTop3 = new drawBackground(480,270,"img/bg_superfront_C.png",0,0,'background');
   dragon = new drawDragon(30,30,"red",10,120);
-  lifeText = new drawText('20px', 'Arial', 'black', 30, 40);
-  scoreText = new drawText('20px', 'Arial', 'black', 110, 40);
+  lifeText = new drawText('20px', 'Arial', '#fff', 30, 40);
+  scoreText = new drawText('20px', 'Arial', '#fff', 110, 40);
   score = 0;
   life = 3;
 }
@@ -73,8 +89,13 @@ let gameArea = {
   }
 }
 
-function drawBackground(width, height, color, x, y) {
+function drawBackground(width, height, color, x, y, type) {
   this.gamearea = gameArea;
+  this.type = type;
+  if (type == 'image' || type == 'background') {
+    this.image = new Image();
+    this.image.src = color;
+  }
   this.width = width;
   this.height = height;
   this.speedX = 0;
@@ -83,12 +104,32 @@ function drawBackground(width, height, color, x, y) {
   this.y = y;
   this.update = function() {
     ctx = gameArea.context;
-    ctx.fillStyle = color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    if (type == 'image' || type == 'background') {
+      ctx.drawImage(this.image,
+        this.x,
+        this.y,
+        this.width, this.height);
+
+        if (type == 'background') {
+          ctx.drawImage(this.image,
+            this.x + this.width,
+            this.y,
+            this.width, this.height);
+        }
+    }
+    else {
+      ctx.fillStyle = color;
+      ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
   }
   this.newPos = function() {
     this.x += this.speedX;
     this.y += this.speedY;
+    if (this.type == 'background') {
+      if (this.x == -(this.width)) {
+        this.x = 0;
+      }
+    }
   }
   this.clicked = function () {
     let myleft = this.x;
@@ -242,8 +283,36 @@ function startGameArea() {
 function updateGameArea() {
   gameArea.clear();
   gameArea.frameNo += 1;
-  background.newPos();
-  background.update();
+  // background.newPos();
+  // background.update();
+
+  bgForest.speedX = -1;;
+  bgForest.newPos();
+  bgForest.update();
+  bgForest2.speedX = -1;;
+  bgForest2.newPos();
+  bgForest2.update();
+
+  bgBottom.speedX = -5;
+  bgBottom.newPos();
+  bgBottom.update();
+  bgBottom2.speedX = -5;
+  bgBottom2.newPos();
+  bgBottom2.update();
+  bgBottom3.speedX = -5;
+  bgBottom3.newPos();
+  bgBottom3.update();
+
+  bgTop.speedX = -4;
+  bgTop.newPos();
+  bgTop.update();
+  bgTop2.speedX = -4;
+  bgTop2.newPos();
+  bgTop2.update();
+  bgTop3.speedX = -4;
+  bgTop3.newPos();
+  bgTop3.update();
+
   initObstacle();
   initCoin();
   initDragon();
