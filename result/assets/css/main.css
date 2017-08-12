@@ -14,6 +14,9 @@
   font-family: 'Montserrat Revando Semibold';
   src: url(../fonts/Montserrat-SemiBold.otf);
 }
+.none{
+  display: none!important;
+}
 .responsive-img{
   max-width: 100%;
   height: auto;
@@ -38,6 +41,9 @@
 }
 .white{
   background-color: #fff;
+}
+.teal{
+  background-color: #009688!important;
 }
 .no-pad{
   padding: 0;
@@ -87,13 +93,152 @@ section{
 }
 /* End declare global CSS */
 
+/* Start declare form CSS */
+.form-title{
+  font-family: 'Montserrat Revando SemiBold';
+  margin-bottom: 0;
+  margin-top: 0;
+  text-align: center;
+}
+.form-control{
+  width: 100%;
+  transition: background-color .5s ease-out, border .5s ease-out;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: 'Montserrat Revando Regular';
+  padding: 8px 10px;
+  outline: none;
+  border: 1px solid #bdbdbd;
+  background-color: #fff;
+  font-size: 16px;
+}
+.form-control:focus{
+  background-color: #fff;
+  border: 1px solid #1565c0;
+}
+button{
+  font-family: 'Montserrat Revando SemiBold';
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.btn.full{
+  width: 100%;
+  display: block;
+}
+.register-text{
+  font-size: 14px;
+  text-align: center;
+}
+.register-text a{
+  transition: color .5s ease-out;
+  color: #1565c0;
+}
+.register-text a:hover{
+  color: #212121;
+}
+.box-upload{
+  transition: background-color .5s ease-out, color .5s ease-out;
+  display: inline-block;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  width: 150px;
+  height: 150px;
+  background-color: #f5f5f5;
+}
+.box-upload:hover{
+  background-color: #1565c0;
+  color: #fff;
+}
+.box-preview{
+  display: inline-block;
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  background-color: #f5f5f5;
+}
+.box-upload .fa{
+  display: block;
+  margin: 43px auto;
+}
+input[type="file"]{
+  display: none;
+}
+.alert{
+  margin: 15px 0;
+  color: #fff;
+  border-radius: 4px;
+  padding: 15px 20px;
+  background-color: #e53935;
+}
+/* End declare form CSS */
+
+/* Start declare captcha CSS */
+.captcha{
+  margin: 15px;
+  width: 225px;
+  border-radius: 4px;
+  clear: both;
+  display: block;
+  overflow: hidden;
+  background-color: #1565c0;
+}
+.captcha-text{
+  display: block;
+  overflow: hidden;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #fff;
+}
+.captcha-instruction{
+  display: block;
+  overflow: hidden;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #fff;
+}
+.captcha-instruction span{
+  display: block;
+  margin-bottom: 10px;
+}
+.captcha-refresh{
+  text-align: center;
+  border-radius: 4px;
+  display: block;
+  background-color: #fff;
+  color: #1565c0;
+  width: 100%;
+  height: 85px;
+  overflow: hidden;
+}
+.refresh-captcha{
+  transition: background-color .5s ease-out, color .5s ease-out;
+  margin-left: 10px;
+  border-radius: 2px;
+  display: block;
+  text-align: center;
+  padding: 8px;
+  background-color: #1565c0;
+  color: #fff;
+}
+.refresh-captcha:hover{
+  background-color: #fff;
+  color: #1565c0;
+}
+.refresh-captcha .fa{
+  font-size: 1.2rem;
+}
+/* End declare captcha CSS */
+
 /* Start declare side navigation CSS */
 aside{
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
   transition: transform .4s ease-out;
-  z-index: 99;
+  z-index: 9;
   color: #fff;
   width: 250px;
-  background-color: #212121;
+  background-color: #fff;
   position: fixed;
   height: 100%;
 }
@@ -131,7 +276,7 @@ aside .logo img{
   height: 100px;
 }
 aside .menu{
-  margin: 10px 0;
+  margin: 70px 0;
 }
 aside ul{
   list-style-type: none;
@@ -139,8 +284,8 @@ aside ul{
   margin: 0;
 }
 aside ul li a{
-  transition: background-color .5s ease-out;
-  color: #fff;
+  transition: background-color .5s ease-out, color .5s ease-out;
+  color: #212121;
   display: block;
   padding: 15px 25px;
 }
@@ -152,7 +297,11 @@ aside ul li a .fa{
   height: inherit;
 }
 aside ul li a:hover{
+  color: #fff;
   background-color: #1565c0
+}
+aside .auth-menu{
+  display: none;
 }
 /* End declare side navigation CSS */
 
@@ -168,11 +317,9 @@ nav{
   background-color: #212121;
   display: block;
   position: fixed;
-  z-index: 9;
+  z-index: 99;
 }
 nav .left{
-  margin-left: 10px;
-  display: none;
 }
 nav .left li{
   margin-right: 10px;
@@ -180,18 +327,19 @@ nav .left li{
 nav .left .toolbar{
   margin: 13px 0;
   padding: 0;
+  display: none;
 }
 nav .left .toolbar .fa{
   font-size: 2rem;
 }
 nav .left .logo{
-  padding: 20px 10px;
+  padding: 5px 0;
 }
 nav .search-wrapper{
   display: inline-block;
   width: 400px;
   position: relative;
-  margin-left: 500px;
+  margin-left: 300px;
 }
 nav .search-wrapper .fa{
   color: #fff;
@@ -216,11 +364,10 @@ nav .search-wrapper input{
   border-radius: 40px;
 }
 nav .logo{
-  display: inline-block;
 }
 nav .logo img{
-  width: 50px;
-  height: auto;
+  width: 142px;
+  height: 46px;
 }
 nav ul{
   list-style-type: none;
@@ -473,7 +620,7 @@ nav #search{
 }
 #about .container img{
   width: 200px;
-  height: 200px;
+  height: auto;
 }
 #about .frame{
   margin: 30px 0;
@@ -488,7 +635,7 @@ footer{
   overflow: hidden;
 }
 footer .container{
-  padding: 10px 0 55px;
+  padding: 10px 35px 55px;
 }
 footer .copyright{
   line-height: 24px;
@@ -505,7 +652,42 @@ footer img{
   height: 35px;
 }
 footer .social-media a{
+  text-align: center;
+  transition: background-color .5s ease-out;
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  border-radius: 100%;
+  overflow: hidden;
+  display: inline-block;
   margin-left: 10px;
+}
+footer .social-media a:hover{
+  background-color: #fff;
+}
+footer .social-media a .fa{
+  transition: color .5s ease-out;
+  color: #fff;
+  margin: 9px 0;
+  font-size: 1.3rem;
+}
+footer .social-media .fb{
+  background-color: #3b5998;
+}
+footer .social-media .fb:hover > .fa{
+  color: #1565c0;
+}
+footer .social-media .yt{
+  background-color: #bb0000;
+}
+footer .social-media .yt:hover > .fa{
+  color: #bb0000;
+}
+footer .social-media .ig{
+  background-color: #c32aa3;
+}
+footer .social-media .ig:hover > .fa{
+  color: #c32aa3;
 }
 /* End declare footer section CSS */
 
@@ -523,14 +705,32 @@ footer .social-media a{
 
 .popup-inner {
   max-width:900px;
+  margin: 50px auto;
   width:90%;
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
+  position:relative;
   box-shadow:0px 2px 6px rgba(0,0,0,1);
   border-radius:2px;
   background:#fff;
+}
+.popup-inner.login{
+  max-width:400px;
+  width:90%;
+  padding: 20px;
+}
+.popup-inner.login #login-form{
+  height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.popup-inner.register{
+  max-width:600px;
+  width:90%;
+  padding: 20px;
+}
+.popup-inner.register #register-form{
+  height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .popup-close {
@@ -572,10 +772,13 @@ footer .social-media a{
   display: block;
   margin: 15px 0;
 }
+.popup .loading-text {
+  margin-bottom: 10px;
+}
 /* End declare modal CSS */
 
 /* Start declare media screen CSS for desktop */
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 801px) {
   .col-1{
     width: 8.33%;
   }
@@ -615,13 +818,19 @@ footer .social-media a{
 }
 
 /* Start declare media screen CSS for tablet */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 800px) {
   nav #search{
+    display: block;
+  }
+  nav .left .toolbar{
     display: block;
   }
   aside .search{
     margin: 10px 0;
     display: block;
+  }
+  aside .menu{
+    margin: 10px 0;
   }
   .nav-top-container{
     padding: 0 15px;
@@ -655,6 +864,9 @@ footer .social-media a{
   }
   #gallery .container{
     padding: 45px 10px 65px;
+  }
+  footer .container{
+    padding: 10px 10px 55px;
   }
   .col-m-1{
     width: 8.33%;
@@ -696,11 +908,28 @@ footer .social-media a{
 
 /* Start declare media screen CSS for smartphone */
 @media only screen and (max-width: 480px) {
-  aside:hover{
-    overflow-y: scroll;
+  .captcha{
+    margin: 12px;
+    width: 100%;
   }
-  aside .menu{
-    margin-bottom: 100px;
+  .refresh-captcha{
+    margin-top: 10px;
+    margin-left: 0;
+  }
+  .popup-inner.register{
+    padding: 10px;
+  }
+  .popup-inner.login{
+    padding: 10px;
+  }
+  aside{
+    top: 59px;
+  }
+  aside:hover{
+    overflow-y: auto;
+  }
+  aside .auth-menu{
+    display: block;
   }
   nav .left{
     margin-left: 0;

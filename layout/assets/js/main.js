@@ -9,7 +9,6 @@ function changeMainBanner(title, color, description, textColor, imgUri) {
   $('.box-main').removeClass('endless-runner');
   $('.box-main').css('background-color',color);
   $('#banner-image').attr('src', imgUri);
-  $('.box-main').find('.btn').attr('onclick','playGame("'+title+'")');
 }
 
 // This function is use to perform toggle navigation on tablet and smartphone screen
@@ -30,6 +29,20 @@ function sideNav() {
 
 function closeModal(modal)  {
   $('#'+modal).fadeOut(350);
+}
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    let reader = new FileReader();
+
+    $('.box-preview').removeClass('none');
+
+    reader.onload = function (e) {
+      $('.box-preview').find('img').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
 }
 
 $(document).ready(function () {
@@ -62,6 +75,7 @@ $(document).ready(function () {
   // Handle open modal event
   $('[data-popup-open]').on('click', function(e)  {
     var targeted_popup_class = jQuery(this).attr('data-popup-open');
+    $('[data-popup]').fadeOut(350);
     $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
     e.preventDefault();
     // $('body').css('overflow-y','hidden');
@@ -77,5 +91,13 @@ $(document).ready(function () {
 
   $('#date_birth_register').datepicker({
     format: 'yyyy-mm-dd'
+  });
+
+  $('.box-upload').on('click', function (e) {
+    $('#photo_register').click();
+  });
+
+  $('#photo_register').on('change', function (e) {
+    readURL(this);
   });
 });

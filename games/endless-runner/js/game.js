@@ -457,10 +457,10 @@ function initObstacle() {
   let y = gameArea.canvas.height;
 
   if (gameArea.frameNo == 1 || everyInterval(450)) {
-    obstacles.push(new drawObstacle(60, 120, "img/obs_btm_A.png", x, y - 210, '', 'image'));
-    obstacles.push(new drawObstacle(60, 150, "img/obs_top_A.png", x + 300, 0,'', 'image'));
-    obstacles.push(new drawObstacle(60, 120, "img/obs_btm_B.png", x + 600, y - 210, '', 'image'));
-    obstacles.push(new drawObstacle(60, 150, "img/obs_top_B.png", x + 900, 0,'', 'image'));
+    obstacles.push(new drawObstacle(40, 120, "img/obs_btm_A.png", x, y - 210, '', 'image'));
+    obstacles.push(new drawObstacle(40, 150, "img/obs_top_A.png", x + 300, 0,'', 'image'));
+    obstacles.push(new drawObstacle(40, 120, "img/obs_btm_B.png", x + 600, y - 210, '', 'image'));
+    obstacles.push(new drawObstacle(40, 150, "img/obs_top_B.png", x + 900, 0,'', 'image'));
   }
 
   for (let i = 0; i < obstacles.length; i++) {

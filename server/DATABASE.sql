@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 08 Agu 2017 pada 14.46
+-- Generation Time: 12 Agu 2017 pada 13.14
 -- Versi Server: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -38,7 +38,7 @@ CREATE TABLE `api_tokens` (
 --
 
 INSERT INTO `api_tokens` (`id`, `token`, `created_at`, `updated_at`) VALUES
-(1, 'ijdasoijds09d098', '2017-08-08 05:45:12', '2017-08-08 05:45:12');
+(1, 'ijdasoijds09d098', '2017-08-11 20:43:22', '2017-08-11 20:43:22');
 
 -- --------------------------------------------------------
 
@@ -53,6 +53,17 @@ CREATE TABLE `endless_runnings` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `endless_runnings`
+--
+
+INSERT INTO `endless_runnings` (`id`, `score`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 30, 2, '2017-08-11 21:31:44', '2017-08-11 21:31:44'),
+(2, 40, 2, '2017-08-11 21:31:52', '2017-08-11 21:31:52'),
+(3, 50, 2, '2017-08-11 21:31:57', '2017-08-11 21:31:57'),
+(4, 60, 1, '2017-08-11 21:32:17', '2017-08-11 21:32:17'),
+(5, 60, 1, '2017-08-11 21:35:58', '2017-08-11 21:35:58');
 
 -- --------------------------------------------------------
 
@@ -71,10 +82,10 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(5, '2014_10_12_000000_create_users_table', 1),
-(6, '2017_08_07_152539_create_endless_runnings_table', 1),
-(7, '2017_08_07_152813_create_tetris_table', 1),
-(8, '2017_08_07_163517_create_api_tokens_table', 1);
+(9, '2014_10_12_000000_create_users_table', 1),
+(10, '2017_08_07_152539_create_endless_runnings_table', 1),
+(11, '2017_08_07_152813_create_tetris_table', 1),
+(12, '2017_08_07_163517_create_api_tokens_table', 1);
 
 -- --------------------------------------------------------
 
@@ -102,6 +113,17 @@ CREATE TABLE `tetris` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `tetris`
+--
+
+INSERT INTO `tetris` (`id`, `score`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 60, 1, '2017-08-11 21:39:17', '2017-08-11 21:39:17'),
+(2, 70, 1, '2017-08-11 21:39:34', '2017-08-11 21:39:34'),
+(3, 90, 1, '2017-08-11 21:39:41', '2017-08-11 21:39:41'),
+(4, 100, 1, '2017-08-11 21:39:46', '2017-08-11 21:39:46'),
+(5, 100, 1, '2017-08-11 21:43:29', '2017-08-11 21:43:29');
+
 -- --------------------------------------------------------
 
 --
@@ -127,7 +149,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `date_birth`, `phone_number`, `profile_picture`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Revando', 'revze', 'revando@outlook.com', '$2y$10$yUHKweNm5sB3RdNZMjNUwugPo8DzxsOA8CkXOLVEB6VvsXktHe81q', '1999-05-19', '085816865807', 'revze.png', NULL, '2017-08-08 05:45:12', '2017-08-08 05:45:12');
+(1, 'Revando', 'revze', 'revando@outlook.com', '$2y$10$DwXWTowSWgNQMCTOKpmWM.Wx06LQIcpZl36gomn7Z2VdTpSvQ2xX6', '1999-05-19', '085816865807', 'revze.png', NULL, '2017-08-11 20:43:22', '2017-08-11 20:43:22'),
+(2, 'Revando 2', 'revando', 'dev.revze@gmail.com', '$2y$10$VeF6/8iBKhDhw5RuM.VgSOb00zH4Fmnc9ebHLuoFTGvPoQmo/1cvy', '1999-09-19', '0999999', '1502509911.png', 'l4mLv4DArccyKQz81gHNkadv6SdSxPKErGUcrljF7YZi3Qm6ZSiucT4Iqk0K', '2017-08-11 20:46:28', '2017-08-11 20:51:51');
 
 --
 -- Indexes for dumped tables
@@ -178,22 +201,22 @@ ALTER TABLE `api_tokens`
 -- AUTO_INCREMENT for table `endless_runnings`
 --
 ALTER TABLE `endless_runnings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `tetris`
 --
 ALTER TABLE `tetris`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --

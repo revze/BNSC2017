@@ -9,6 +9,7 @@ function changeMainBanner(title, color, description, textColor, imgUri) {
   $('.box-main').removeClass('endless-runner');
   $('.box-main').css('background-color',color);
   $('#banner-image').attr('src', imgUri);
+  $('.box-main').find('.btn').attr('onclick','playGame("'+title+'")');
 }
 
 // This function is use to perform toggle navigation on tablet and smartphone screen
@@ -27,6 +28,10 @@ function sideNav() {
   }
 }
 
+function closeModal(modal)  {
+  $('#'+modal).fadeOut(350);
+}
+
 $(document).ready(function () {
   // This event is use to handle click event on toolbar
   $('.toolbar').on('click',function () {
@@ -40,7 +45,7 @@ $(document).ready(function () {
 
   // This event is use to handle resize event on window
   $(window).on('resize',function () {
-    if ($(window).width() > 768) {
+    if ($(window).width() > 800) {
       $('aside').css({
         'visibility':'visible',
         'transform':'translateX(0)',
@@ -68,5 +73,9 @@ $(document).ready(function () {
     $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
     e.preventDefault();
     // $('body').css('overflow-y','auto');
+  });
+
+  $('#date_birth_register').datepicker({
+    format: 'yyyy-mm-dd'
   });
 });
