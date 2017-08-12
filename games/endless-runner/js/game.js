@@ -37,6 +37,7 @@ let retryBtn;
 let retryBtnText;
 let finalScore;
 
+//Method that use to draw start screen of game
 function initGame() {
   gameArea.start();
   startBackground = new drawBackground(canvasWidth,canvasHeight,"img/bg_back_B.png",0,0,'background');
@@ -48,6 +49,7 @@ function initGame() {
   guideText = new drawText('20px', 'Arial', 'white', (canvasWidth/2) - (140/2) - 120, (canvasHeight/2) - (50/2) - 30);
 }
 
+//Method that use to draw play screen of game
 function startGame() {
   // gameArea.start();
   background = new drawBackground(canvasWidth,canvasHeight,"gray",0,0);
@@ -76,6 +78,7 @@ function startGame() {
   life = 3;
 }
 
+//Method that use to draw retry screen of game
 function retryGame() {
   gameOverBackground = new drawBackground(canvasWidth,canvasHeight,"img/bg_back_B.png",0,0,'background');
   gameOverBackground1 = new drawBackground(canvasWidth,canvasHeight,"img/bg_middle_A.png",0,0,'background');
@@ -86,6 +89,7 @@ function retryGame() {
   finalScore = new drawText('20px', 'Arial', 'white', (canvasWidth/2) - (90/2) - 19, (canvasHeight/2) - (50/2) - 25);
 }
 
+//Initialize object that use to frame and keyboard control in game
 let gameArea = {
   canvas: document.createElement('canvas'),
   start: function () {
@@ -119,6 +123,7 @@ let gameArea = {
   }
 }
 
+// Method that use to draw background in game
 function drawBackground(width, height, color, x, y, type) {
   this.gamearea = gameArea;
   this.type = type;
@@ -174,6 +179,7 @@ function drawBackground(width, height, color, x, y, type) {
   }
 }
 
+// Method that use to draw dragon in game
 function drawDragon(type, width, height, color, x, y, spriteX, spriteY, spriteWidth, spriteHeight) {
   this.gamearea = gameArea;
   this.type = type;
@@ -237,6 +243,7 @@ function drawDragon(type, width, height, color, x, y, spriteX, spriteY, spriteWi
   }
 }
 
+// Method that use to draw obstacles in game
 function drawObstacle(width, height, color, x, y, status, type) {
   this.gamearea = gameArea;
   this.type = type;
@@ -273,6 +280,7 @@ function drawObstacle(width, height, color, x, y, status, type) {
   }
 }
 
+// Method that use to draw coins in game
 function drawCoin(type, width, height, color, x, y, spriteX, spriteY, spriteWidth, spriteHeight) {
   this.gamearea = gameArea;
   this.type = type;
@@ -312,6 +320,7 @@ function drawCoin(type, width, height, color, x, y, spriteX, spriteY, spriteWidt
   }
 }
 
+// Method that use to draw text in game
 function drawText(width, height, color, x, y) {
   this.gamearea = gameArea;
   this.width = width;
@@ -332,6 +341,7 @@ function drawText(width, height, color, x, y) {
   }
 }
 
+// Method that use to draw start screen in game
 function startGameArea() {
   gameArea.clear();
   if (gameArea.x && gameArea.y) {
@@ -359,6 +369,7 @@ function startGameArea() {
   guideText.update();
 }
 
+// Method that use to draw play screen and interaction in game
 function updateGameArea() {
   gameArea.clear();
   gameArea.frameNo += 1;
@@ -409,6 +420,7 @@ function updateGameArea() {
   initGameStatus();
 }
 
+// Method that use to draw retry screen in game
 function retryGameArea() {
   gameArea.clear();
   gameOverBackground.newPos();
@@ -439,6 +451,7 @@ function retryGameArea() {
   finalScore.update();
 }
 
+// Method that use to init game obstacles
 function initObstacle() {
   let x = gameArea.canvas.width;
   let y = gameArea.canvas.height;
@@ -464,6 +477,7 @@ function initObstacle() {
   }
 }
 
+// Method that use to init game coin
 function initCoin() {
   if (gameArea.frameNo == 1 || everyInterval(450)) {
     for (let i = 0; i < 3; i++) {
@@ -487,6 +501,7 @@ function initCoin() {
   }
 }
 
+// Method that use to init game dragon
 function initDragon() {
   dragon.speedX = 0;
   dragon.speedY = 0;
@@ -521,6 +536,7 @@ function initDragon() {
   dragon.update();
 }
 
+// Method that use to init game status
 function initGameStatus() {
   scoreText.text = 'Score: ' + score;
   scoreText.update();
@@ -538,6 +554,7 @@ function initGameStatus() {
   }
 }
 
+// Method that use to check frame in game
 function everyInterval(n) {
   if ((gameArea.frameNo / n) % 1 == 0) {
     return true;

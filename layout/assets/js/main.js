@@ -41,7 +41,7 @@ $(document).ready(function () {
 
   // This event is use to handle resize event on window
   $(window).on('resize',function () {
-    if ($(window).width() > 768) {
+    if ($(window).width() > 800) {
       $('aside').css({
         'visibility':'visible',
         'transform':'translateX(0)',

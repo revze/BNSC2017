@@ -10,7 +10,7 @@
   </head>
   <body>
     <!-- Start game modal section -->
-    <div class="popup" id="popup-game">
+    <div class="popup" data-popup="popup-game" id="popup-game">
       <div class="popup-inner">
         <div class="row">
           <div class="col-s-12 col-m-9 col-9 no-pad">
@@ -36,7 +36,7 @@
     <!-- End game modal section -->
 
     <!-- Start register modal section -->
-    <div class="popup" id="popup-register">
+    <div class="popup" data-popup="popup-register" id="popup-register">
       <div class="popup-inner register">
         <form id="register-form" enctype="multipart/form-data">
           <div class="row">
@@ -127,7 +127,7 @@
     <!-- End register modal section -->
 
     <!-- Start login modal section -->
-    <div class="popup" id="popup-login">
+    <div class="popup" data-popup="popup-login" id="popup-login">
       <div class="popup-inner login">
         <form id="login-form">
           <div class="row">
@@ -204,8 +204,8 @@
         <div class="right">
           <ul>
             <li id="search"><a href="javascript:void(0)" class="search"><i class="fa fa-search"></i></a></li>
-            <li class="register-menu"><a href="#!" class="auth">Login</a></li>
-            <li class="login-menu"><a href="register.html" class="auth">Register</a></li>
+            <li class="register-menu"><a href="#!" class="auth" data-popup-open="popup-login">Login</a></li>
+            <li class="login-menu"><a href="#!" class="auth" data-popup-open="popup-register">Register</a></li>
           </ul>
         </div>
       </div>
@@ -214,14 +214,14 @@
 
     <!-- Start side navigation menu section -->
     <aside>
-      <div class="logo">
+      <!-- <div class="logo">
         <img src="assets/img/logo.png" alt="Logo">
-      </div>
-      <div class="search">
-        <input type="text" placeholder="Search Game">
-        <i class="fa fa-search"></i>
-      </div>
+      </div> -->
       <div class="menu">
+        <div class="search">
+          <input type="text" placeholder="Search Game">
+          <i class="fa fa-search"></i>
+        </div>
         <ul>
           <li><a href="#!"><i class="fa fa-home"></i>Home</a></li>
           <li><a href="#!"><i class="fa fa-rocket"></i>Banner</a></li>
@@ -293,7 +293,7 @@
 
       <!-- Start gallery section -->
       <section id="gallery" class="gray">
-        <div class="container gallery">
+        <div class="container">
           <div class="row">
             <div class="col-s-12 col-m-12 col-12">
               <h2 class="center">Explore Our Gallery</h2>
@@ -425,9 +425,12 @@
                 </div>
               </div>
               <div class="right social-media">
-                <a href="#!"><img src="assets/img/fb.png" alt="Facebook"></a>
+                <!-- <a href="#!"><img src="assets/img/fb.png" alt="Facebook"></a>
                 <a href="#!"><img src="assets/img/yt.png" alt="Facebook"></a>
-                <a href="#!"><img src="assets/img/ig.png" alt="Instagram"></a>
+                <a href="#!"><img src="assets/img/ig.png" alt="Instagram"></a> -->
+                <a href="#" class="fb"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="yt"><i class="fa fa-youtube-play"></i></a>
+                <a href="#" class="ig"><i class="fa fa-instagram"></i></a>
               </div>
             </div>
           </div>
