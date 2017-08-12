@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 12 Agu 2017 pada 16.58
+-- Generation Time: 12 Agu 2017 pada 18.15
 -- Versi Server: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bnsc2017`
+-- Database: `bnsc2017_revando`
 --
 
 -- --------------------------------------------------------
@@ -72,7 +72,9 @@ INSERT INTO `endless_runnings` (`id`, `score`, `user_id`, `created_at`, `updated
 (11, 90, 5, '2017-08-12 07:26:17', '2017-08-12 07:26:17'),
 (12, 170, 5, '2017-08-12 07:27:40', '2017-08-12 07:27:40'),
 (13, 180, 1, '2017-08-12 07:45:43', '2017-08-12 07:45:43'),
-(14, 90, 1, '2017-08-12 07:47:45', '2017-08-12 07:47:45');
+(14, 90, 1, '2017-08-12 07:47:45', '2017-08-12 07:47:45'),
+(15, 250, 1, '2017-08-12 09:12:26', '2017-08-12 09:12:26'),
+(16, 90, 7, '2017-08-12 09:14:25', '2017-08-12 09:14:25');
 
 -- --------------------------------------------------------
 
@@ -163,7 +165,8 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `date_birth`
 (3, 'asdasd', 'sadasd', 'dedyqurnia722@gmail.comasd', '$2y$10$ZOtFZ2aWEJCjNckymSQFqO.1kHXGBWUehQCfbPV/Xoqn2n0UuXH6S', '2017-08-16', '213213', '1502544920.png', NULL, '2017-08-12 06:35:20', '2017-08-12 06:35:20'),
 (4, 'Abri Asyikin', 'abri', 'abri@gmail.com', '$2y$10$2pU7PON03RZxxJlJ2NWuneg.jErOiDm3qcZBkQeeSvbtwaU7B6xr2', '2017-08-23', '9999', '1502545399.jpg', 'gtBGGfndyoyW5Z0T0Nesy2NWvRDjF5WCciDpufDRlDJQrIi8ugJ66zHxqZzr', '2017-08-12 06:43:18', '2017-08-12 06:43:18'),
 (5, 'Erwin', 'erwin', 'erwin@gmail.com', '$2y$10$p/F.Co5ir.1jW397iAcM/ehaWh7GpdGOEcq5yX790a4VZEB4VnS.W', '2017-08-23', '999999', '1502547898.jpg', NULL, '2017-08-12 07:24:58', '2017-08-12 07:24:58'),
-(6, 'Ismail', 'ismail', 'ismail@gmail.com', '$2y$10$X542FqwbY9uAAl8EdUZAoeviMNlx7jE6x.aKjNgrtTKDD/fn5exNK', '2017-08-15', '45454545', '1502549848.jpg', NULL, '2017-08-12 07:57:28', '2017-08-12 07:57:28');
+(6, 'Ismail', 'ismail', 'ismail@gmail.com', '$2y$10$X542FqwbY9uAAl8EdUZAoeviMNlx7jE6x.aKjNgrtTKDD/fn5exNK', '2017-08-15', '45454545', '1502549848.jpg', NULL, '2017-08-12 07:57:28', '2017-08-12 07:57:28'),
+(7, 'Edwin', 'edwin', 'edwin@gmail.com', '$2y$10$M.WA7vAj4hH.dOwpymOE/.QDVK7.ktHKBiaR75qEUZiITpE1Lqpii', '2017-08-24', '45435345', '1502554445.png', NULL, '2017-08-12 09:14:05', '2017-08-12 09:14:05');
 
 --
 -- Indexes for dumped tables
@@ -214,7 +217,7 @@ ALTER TABLE `api_tokens`
 -- AUTO_INCREMENT for table `endless_runnings`
 --
 ALTER TABLE `endless_runnings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
@@ -229,7 +232,7 @@ ALTER TABLE `tetris`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --

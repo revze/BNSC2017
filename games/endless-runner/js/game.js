@@ -373,7 +373,7 @@ function startGameArea() {
   btnStart.update();
   startText.text = 'Play Game';
   startText.update();
-  guideText.text = 'Use arrow top and bottom to move dragon.';
+  guideText.text = 'Use arrow up and down to move dragon.';
   guideText.update();
 }
 

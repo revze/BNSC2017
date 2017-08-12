@@ -34,8 +34,11 @@ function checkAuth() {
 }
 
 function logoutUser() {
-  localStorage.clear();
-  checkAuth();
+  let dialog = confirm('Are you sure want to logout?');
+  if (dialog == true) {
+    localStorage.clear();
+    checkAuth();
+  }
 }
 
 function playGame(game)  {
