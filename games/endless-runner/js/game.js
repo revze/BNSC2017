@@ -1,10 +1,20 @@
+let canvasWidth = 800;
+let canvasHeight = 400;
+
 let startBackground;
+let startBackground1;
+let startBackground2;
+let startBackground3;
 let btnStart;
 let startText;
+let guideText;
 
 let background;
 let bgForest;
 let bgForest2;
+let bgMiddle;
+let bgMiddle2;
+let bgMiddle3;
 let bgBottom;
 let bgBottom2;
 let bgBottom3;
@@ -20,47 +30,67 @@ let coin = [];
 let obstacles = [];
 
 let gameOverBackground;
+let gameOverBackground1;
+let gameOverBackground2;
+let gameOverBackground3;
 let retryBtn;
 let retryBtnText;
 let finalScore;
 
 function initGame() {
   gameArea.start();
-  startBackground = new drawBackground(480,270,"black",0,0);
-  btnStart = new drawBackground(30,30,"blue",10,120);
-  startText = new drawText('20px', 'Arial', 'white', 30, 40);
+  startBackground = new drawBackground(canvasWidth,canvasHeight,"img/bg_back_B.png",0,0,'background');
+  startBackground1 = new drawBackground(canvasWidth,canvasHeight,"img/bg_middle_A.png",0,0,'background');
+  startBackground2 = new drawBackground(canvasWidth,canvasHeight,"img/bg_front_ground_C.png",0,0,'background');
+  startBackground3 = new drawBackground(canvasWidth,canvasHeight,"img/bg_superfront_C.png",0,0,'background');
+  btnStart = new drawBackground(140 , 50, "#60678a", (canvasWidth/2) - (140/2), (canvasHeight/2) - (50/2));
+  startText = new drawText('20px', 'Arial', 'white', (canvasWidth/2) - (140/2) + 21, (canvasHeight/2) - (50/2) + 30);
+  guideText = new drawText('20px', 'Arial', 'white', (canvasWidth/2) - (140/2) - 120, (canvasHeight/2) - (50/2) - 30);
 }
 
 function startGame() {
   // gameArea.start();
-  background = new drawBackground(480,270,"gray",0,0);
-  bgForest = new drawBackground(480,270,"img/bg_back_A.png",0,0,'background');
-  bgForest2 = new drawBackground(480,270,"img/bg_back_B.png",0,0,'background');
-  bgBottom = new drawBackground(480,270,"img/bg_front_ground_A.png",0,0,'background');
-  bgBottom2 = new drawBackground(480,270,"img/bg_front_ground_B.png",0,0,'background');
-  bgBottom3 = new drawBackground(480,270,"img/bg_front_ground_C.png",0,0,'background');
-  bgTop = new drawBackground(480,270,"img/bg_superfront_A.png",0,0,'background');
-  bgTop2 = new drawBackground(480,270,"img/bg_superfront_B.png",0,0,'background');
-  bgTop3 = new drawBackground(480,270,"img/bg_superfront_C.png",0,0,'background');
-  dragon = new drawDragon(30,30,"red",10,120);
+  background = new drawBackground(canvasWidth,canvasHeight,"gray",0,0);
+
+  bgForest = new drawBackground(canvasWidth,canvasHeight,"img/bg_back_A.png",0,0,'background');
+  bgForest2 = new drawBackground(canvasWidth,canvasHeight,"img/bg_back_B.png",0,0,'background');
+
+  bgMiddle = new drawBackground(canvasWidth,canvasHeight,"img/bg_middle_A.png",0,0,'background');
+  bgMiddle2 = new drawBackground(canvasWidth,canvasHeight,"img/bg_middle_B.png",0,0,'background');
+  bgMiddle3 = new drawBackground(canvasWidth,canvasHeight,"img/bg_middle_C.png",0,0,'background');
+
+  bgBottom = new drawBackground(canvasWidth,canvasHeight,"img/bg_front_ground_A.png",0,0,'background');
+  bgBottom2 = new drawBackground(canvasWidth,canvasHeight,"img/bg_front_ground_B.png",0,0,'background');
+  bgBottom3 = new drawBackground(canvasWidth,canvasHeight,"img/bg_front_ground_C.png",0,0,'background');
+
+  bgTop = new drawBackground(canvasWidth,canvasHeight,"img/bg_superfront_A.png",0,0,'background');
+  bgTop2 = new drawBackground(canvasWidth,canvasHeight,"img/bg_superfront_B.png",0,0,'background');
+  bgTop3 = new drawBackground(canvasWidth,canvasHeight,"img/bg_superfront_C.png",0,0,'background');
+
+  dragon = new drawDragon('image', 90, 85, "img/dragon.png.", 10, 120, 0, 0, 250, 240);
+
   lifeText = new drawText('20px', 'Arial', '#fff', 30, 40);
   scoreText = new drawText('20px', 'Arial', '#fff', 110, 40);
+
   score = 0;
   life = 3;
 }
 
 function retryGame() {
-  gameOverBackground = new drawBackground(480,270,"blue",0,0);
-  retryBtn = new drawBackground(30,30,"red",10,120);
-  retryBtnText = new drawText('20px', 'Arial', 'white', 150, 40);
-  finalScore = new drawText('20px', 'Arial', 'white', 30, 40);
+  gameOverBackground = new drawBackground(canvasWidth,canvasHeight,"img/bg_back_B.png",0,0,'background');
+  gameOverBackground1 = new drawBackground(canvasWidth,canvasHeight,"img/bg_middle_A.png",0,0,'background');
+  gameOverBackground2 = new drawBackground(canvasWidth,canvasHeight,"img/bg_front_ground_C.png",0,0,'background');
+  gameOverBackground3 = new drawBackground(canvasWidth,canvasHeight,"img/bg_superfront_C.png",0,0,'background');
+  retryBtn = new drawBackground(90 , 50, "#60678a", (canvasWidth/2) - (90/2), (canvasHeight/2) - (50/2));
+  retryBtnText = new drawText('20px', 'Arial', 'white', (canvasWidth/2) - (90/2) + 20, (canvasHeight/2) - (50/2) + 30);
+  finalScore = new drawText('20px', 'Arial', 'white', (canvasWidth/2) - (90/2) - 19, (canvasHeight/2) - (50/2) - 25);
 }
 
 let gameArea = {
   canvas: document.createElement('canvas'),
   start: function () {
-    this.canvas.width = 480;
-    this.canvas.height = 270;
+    this.canvas.width = canvasWidth;
+    this.canvas.height = canvasHeight;
     this.context = this.canvas.getContext('2d');
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
     this.frameNo = 0;
@@ -144,18 +174,32 @@ function drawBackground(width, height, color, x, y, type) {
   }
 }
 
-function drawDragon(width, height, color, x, y) {
+function drawDragon(type, width, height, color, x, y, spriteX, spriteY, spriteWidth, spriteHeight) {
   this.gamearea = gameArea;
+  this.type = type;
+  if (type == 'image') {
+    this.image = new Image();
+    this.image.src = color;
+  }
   this.width = width;
   this.height = height;
   this.speedX = 0;
   this.speedY = 0;
   this.x = x;
   this.y = y;
+  this.spriteX = spriteX;
+  this.spriteY = spriteY;
+  this.spriteWidth = spriteWidth;
+  this.spriteHeight = spriteHeight;
   this.update = function() {
     ctx = gameArea.context;
-    ctx.fillStyle = color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    if (this.type == 'image') {
+      ctx.drawImage(this.image, this.spriteX, this.spriteY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
+    }
+    else {
+      ctx.fillStyle = color;
+      ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
   }
   this.newPos = function() {
     this.x += this.speedX;
@@ -193,8 +237,13 @@ function drawDragon(width, height, color, x, y) {
   }
 }
 
-function drawObstacle(width, height, color, x, y, status) {
+function drawObstacle(width, height, color, x, y, status, type) {
   this.gamearea = gameArea;
+  this.type = type;
+  if (type == 'image') {
+    this.image = new Image();
+    this.image.src = color;
+  }
   this.width = width;
   this.height = height;
   this.speedX = 0;
@@ -204,8 +253,16 @@ function drawObstacle(width, height, color, x, y, status) {
   this.status = status;
   this.update = function() {
     ctx = gameArea.context;
-    ctx.fillStyle = color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    if (type == 'image') {
+      ctx.drawImage(this.image,
+        this.x,
+        this.y,
+        this.width, this.height);
+    }
+    else {
+      ctx.fillStyle = color;
+      ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
   }
   this.newPos = function() {
     this.x += this.speedX;
@@ -216,18 +273,32 @@ function drawObstacle(width, height, color, x, y, status) {
   }
 }
 
-function drawCoin(width, height, color, x, y) {
+function drawCoin(type, width, height, color, x, y, spriteX, spriteY, spriteWidth, spriteHeight) {
   this.gamearea = gameArea;
+  this.type = type;
+  if (type == 'image') {
+    this.image = new Image();
+    this.image.src = color;
+  }
   this.width = width;
   this.height = height;
   this.speedX = 0;
   this.speedY = 0;
   this.x = x;
   this.y = y;
+  this.spriteX = spriteX;
+  this.spriteY = spriteY;
+  this.spriteWidth = spriteWidth;
+  this.spriteHeight = spriteHeight;
   this.update = function() {
     ctx = gameArea.context;
-    ctx.fillStyle = color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    if (this.type == 'image') {
+      ctx.drawImage(this.image, this.spriteX, this.spriteY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
+    }
+    else {
+      ctx.fillStyle = color;
+      ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
   }
   this.newPos = function() {
     this.x += this.speedX;
@@ -274,10 +345,18 @@ function startGameArea() {
   }
   startBackground.newPos();
   startBackground.update();
+  startBackground1.newPos();
+  startBackground1.update();
+  startBackground2.newPos();
+  startBackground2.update();
+  startBackground3.newPos();
+  startBackground3.update();
   btnStart.newPos();
   btnStart.update();
   startText.text = 'Play Game';
   startText.update();
+  guideText.text = 'Use arrow top and bottom to move dragon.';
+  guideText.update();
 }
 
 function updateGameArea() {
@@ -293,6 +372,16 @@ function updateGameArea() {
   bgForest2.newPos();
   bgForest2.update();
 
+  bgMiddle.speedX = -1;;
+  bgMiddle.newPos();
+  bgMiddle.update();
+  bgMiddle2.speedX = -1;;
+  bgMiddle2.newPos();
+  bgMiddle2.update();
+  bgMiddle3.speedX = -1;;
+  bgMiddle3.newPos();
+  bgMiddle3.update();
+
   bgBottom.speedX = -5;
   bgBottom.newPos();
   bgBottom.update();
@@ -302,6 +391,8 @@ function updateGameArea() {
   bgBottom3.speedX = -5;
   bgBottom3.newPos();
   bgBottom3.update();
+
+  initObstacle();
 
   bgTop.speedX = -4;
   bgTop.newPos();
@@ -313,7 +404,6 @@ function updateGameArea() {
   bgTop3.newPos();
   bgTop3.update();
 
-  initObstacle();
   initCoin();
   initDragon();
   initGameStatus();
@@ -323,6 +413,12 @@ function retryGameArea() {
   gameArea.clear();
   gameOverBackground.newPos();
   gameOverBackground.update();
+  gameOverBackground1.newPos();
+  gameOverBackground1.update();
+  gameOverBackground2.newPos();
+  gameOverBackground2.update();
+  gameOverBackground3.newPos();
+  gameOverBackground3.update();
   if (gameArea.x && gameArea.y) {
     if (retryBtn.clicked()) {
       clearInterval(gameArea.interval);
@@ -339,7 +435,7 @@ function retryGameArea() {
   retryBtn.update();
   retryBtnText.text = 'Retry';
   retryBtnText.update();
-  finalScore.text = 'Score: ' + score;
+  finalScore.text = 'Your score: ' + score;
   finalScore.update();
 }
 
@@ -348,12 +444,14 @@ function initObstacle() {
   let y = gameArea.canvas.height;
 
   if (gameArea.frameNo == 1 || everyInterval(450)) {
-    obstacles.push(new drawObstacle(30,60,"blue",x,y - 40,''));
-    obstacles.push(new drawObstacle(30,60,"green",x + 150, 0,''));
+    obstacles.push(new drawObstacle(60, 120, "img/obs_btm_A.png", x, y - 210, '', 'image'));
+    obstacles.push(new drawObstacle(60, 150, "img/obs_top_A.png", x + 300, 0,'', 'image'));
+    obstacles.push(new drawObstacle(60, 120, "img/obs_btm_B.png", x + 600, y - 210, '', 'image'));
+    obstacles.push(new drawObstacle(60, 150, "img/obs_top_B.png", x + 900, 0,'', 'image'));
   }
 
   for (let i = 0; i < obstacles.length; i++) {
-    obstacles[i].speedX = -1.5;
+    obstacles[i].speedX = -3;
     obstacles[i].newPos();
     obstacles[i].update();
   }
@@ -370,13 +468,13 @@ function initCoin() {
   if (gameArea.frameNo == 1 || everyInterval(450)) {
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
-        coin.push(new drawCoin(30, 30, "yellow", (j * 35) + 450, (i * 35) + 100));
+        coin.push(new drawCoin('image', 30, 30, "img/spinning_coin_gold.png", (j * 35) + (canvasWidth - 30), (i * 35)  + (canvasHeight - 280), 0, 0, 30, 35));
       }
     }
   }
 
   for (let i = 0; i < coin.length; i++) {
-    coin[i].speedX = -1.5;
+    coin[i].speedX = -2;
     coin[i].newPos();
     coin[i].update();
   }
@@ -400,10 +498,25 @@ function initDragon() {
   }
   if (gameArea.key && gameArea.key == 40) {
     dragon.speedY = 2;
-    if (dragon.y >= 260 - dragon.height) {
+    if (dragon.y >= 300 - dragon.height) {
       dragon.speedY = 0;
     }
   }
+
+  // if (dragon.spriteX == 0) {
+  //   setTimeout(function () {
+  //     dragon.spriteX = 480;
+  //     dragon.spriteWidth = 240;
+  //     dragon.spriteHeight = 230;
+  //   },250);
+  // }
+  // else if (dragon.spriteX == 480) {
+  //   setTimeout(function () {
+  //     dragon.spriteX = 0;
+  //     dragon.spriteWidth = 225;
+  //     dragon.spriteHeight = 220;
+  //   },250);
+  // }
   dragon.newPos();
   dragon.update();
 }
