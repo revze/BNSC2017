@@ -28,6 +28,10 @@ function sideNav() {
   }
 }
 
+function closeModal(modal)  {
+  $('#'+modal).fadeOut(350);
+}
+
 $(document).ready(function () {
   // This event is use to handle click event on toolbar
   $('.toolbar').on('click',function () {
@@ -69,5 +73,9 @@ $(document).ready(function () {
     $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
     e.preventDefault();
     // $('body').css('overflow-y','auto');
+  });
+
+  $('#date_birth_register').datepicker({
+    format: 'yyyy-mm-dd'
   });
 });

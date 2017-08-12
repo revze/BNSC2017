@@ -1,4 +1,4 @@
-let apiHost = 'http://localhost:8000/api/';
+let apiHost = '../server/project/public/api/';
 let apiToken = 'ijdasoijds09d098';
 let apiLogin = apiHost + 'login';
 let apiRegister = apiHost + 'register';
@@ -92,10 +92,6 @@ function playGame(game)  {
     generateCaptcha();
     $('#popup-login').fadeIn(350);
   }
-}
-
-function closeModal(modal)  {
-  $('#'+modal).fadeOut(350);
 }
 
 function registerUser() {

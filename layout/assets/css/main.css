@@ -300,6 +300,9 @@ aside ul li a:hover{
   color: #fff;
   background-color: #1565c0
 }
+aside .auth-menu{
+  display: none;
+}
 /* End declare side navigation CSS */
 
 main{
@@ -317,8 +320,6 @@ nav{
   z-index: 99;
 }
 nav .left{
-  margin-left: 10px;
-  display: none;
 }
 nav .left li{
   margin-right: 10px;
@@ -326,18 +327,19 @@ nav .left li{
 nav .left .toolbar{
   margin: 13px 0;
   padding: 0;
+  display: none;
 }
 nav .left .toolbar .fa{
   font-size: 2rem;
 }
 nav .left .logo{
-  padding: 20px 10px;
+  padding: 5px 0;
 }
 nav .search-wrapper{
   display: inline-block;
   width: 400px;
   position: relative;
-  margin-left: 500px;
+  margin-left: 300px;
 }
 nav .search-wrapper .fa{
   color: #fff;
@@ -362,11 +364,10 @@ nav .search-wrapper input{
   border-radius: 40px;
 }
 nav .logo{
-  display: inline-block;
 }
 nav .logo img{
-  width: 50px;
-  height: auto;
+  width: 142px;
+  height: 46px;
 }
 nav ul{
   list-style-type: none;
@@ -619,7 +620,7 @@ nav #search{
 }
 #about .container img{
   width: 200px;
-  height: 200px;
+  height: auto;
 }
 #about .frame{
   margin: 30px 0;
@@ -704,11 +705,9 @@ footer .social-media .ig:hover > .fa{
 
 .popup-inner {
   max-width:900px;
+  margin: 50px auto;
   width:90%;
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
+  position:relative;
   box-shadow:0px 2px 6px rgba(0,0,0,1);
   border-radius:2px;
   background:#fff;
@@ -717,6 +716,11 @@ footer .social-media .ig:hover > .fa{
   max-width:400px;
   width:90%;
   padding: 20px;
+}
+.popup-inner.login #login-form{
+  height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .popup-inner.register{
   max-width:600px;
@@ -818,6 +822,9 @@ footer .social-media .ig:hover > .fa{
   nav #search{
     display: block;
   }
+  nav .left .toolbar{
+    display: block;
+  }
   aside .search{
     margin: 10px 0;
     display: block;
@@ -901,11 +908,28 @@ footer .social-media .ig:hover > .fa{
 
 /* Start declare media screen CSS for smartphone */
 @media only screen and (max-width: 480px) {
+  .captcha{
+    margin: 12px;
+    width: 100%;
+  }
+  .refresh-captcha{
+    margin-top: 10px;
+    margin-left: 0;
+  }
+  .popup-inner.register{
+    padding: 10px;
+  }
+  .popup-inner.login{
+    padding: 10px;
+  }
   aside{
     top: 59px;
   }
   aside:hover{
-    overflow-y: scroll;
+    overflow-y: auto;
+  }
+  aside .auth-menu{
+    display: block;
   }
   nav .left{
     margin-left: 0;

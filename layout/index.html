@@ -7,6 +7,7 @@
     <!-- This HTML tag is use to include external CSS file -->
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/js/datepicker/datepicker.min.css">
   </head>
   <body>
     <!-- Start game modal section -->
@@ -62,7 +63,7 @@
           </div>
           <div class="row">
             <div class="col-s-12 col-m-6 col-6">
-              <input type="date" name="date_birth" placeholder="Date of Birth" class="form-control" id="date_birth_register">
+              <input type="text" name="date_birth" placeholder="Date of Birth" class="form-control" id="date_birth_register" readonly>
             </div>
             <div class="col-s-12 col-m-6 col-6">
               <input type="text" name="phone_number" placeholder="Phone Number" class="form-control" id="phone_number_register">
@@ -74,7 +75,7 @@
                 <i class="fa fa-photo fa-4x"></i>
               </div>
               <div class="box-preview none">
-                <img src="" alt="Image Preview" class="responsive-img">
+                <img src="assets/img/null.png" alt="Image Preview" class="responsive-img">
               </div>
               <input type="file" name="photo" id="photo_register" accept="image/*">
             </div>
@@ -83,7 +84,7 @@
             <div class="row">
               <div class="col-s-12 col-m-12 col-12 pad-bot">
                 <div class="captcha-text">
-                  <img src="" alt="Captcha Image">
+                  <img src="assets/img/captcha.png" alt="Captcha Image">
                   <input type="hidden" name="captcha_hash">
                 </div>
               </div>
@@ -149,7 +150,7 @@
                 <div class="row">
                   <div class="col-s-12 col-m-12 col-12 pad-bot">
                     <div class="captcha-text">
-                      <img src="" alt="Captcha Image">
+                      <img src="assets/img/captcha.png" alt="Captcha Image">
                       <input type="hidden" name="captcha_hash">
                     </div>
                   </div>
@@ -194,7 +195,7 @@
         <div class="left">
           <ul>
             <li><a href="javascript:void(0)" class="toolbar"><i class="fa fa-bars"></i></a></li>
-            <li><a href="#!" class="logo">Logo</a></li>
+            <li><a href="#!" class="logo"><img src="assets/img/logo.png" alt="Logo"></a></li>
           </ul>
         </div>
         <div class="search-wrapper">
@@ -227,6 +228,8 @@
           <li><a href="#!"><i class="fa fa-rocket"></i>Banner</a></li>
           <li><a href="#!"><i class="fa fa-image"></i>Gallery</a></li>
           <li><a href="#!"><i class="fa fa-globe"></i>About</a></li>
+          <li class="auth-menu" data-popup-open="popup-login"><a href="#!"><i class="fa fa-sign-in"></i>Login</a></li>
+          <li class="auth-menu" data-popup-open="popup-register"><a href="#!"><i class="fa fa-user-plus"></i>Register</a></li>
         </ul>
       </div>
     </aside>
@@ -406,7 +409,7 @@
             </div>
             <div class="col-s-12 col-m-4 col-4">
               <div class="frame">
-                <img src="assets/img/logo.png" alt="Logo">
+                <img src="assets/img/logo-icon.png" alt="Logo">
               </div>
             </div>
           </div>
@@ -428,9 +431,9 @@
                 <!-- <a href="#!"><img src="assets/img/fb.png" alt="Facebook"></a>
                 <a href="#!"><img src="assets/img/yt.png" alt="Facebook"></a>
                 <a href="#!"><img src="assets/img/ig.png" alt="Instagram"></a> -->
-                <a href="#" class="fb"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="yt"><i class="fa fa-youtube-play"></i></a>
-                <a href="#" class="ig"><i class="fa fa-instagram"></i></a>
+                <a href="#!" class="fb"><i class="fa fa-facebook"></i></a>
+                <a href="#!" class="yt"><i class="fa fa-youtube-play"></i></a>
+                <a href="#!" class="ig"><i class="fa fa-instagram"></i></a>
               </div>
             </div>
           </div>
@@ -443,10 +446,10 @@
     <!-- This HTML tag is use to include external Javascript file -->
     <script src="assets/js/jquery.min.js" charset="utf-8"></script>
     <script src="assets/js/main.js" charset="utf-8"></script>
+    <script src="assets/js/datepicker/datepicker.min.js" charset="utf-8"></script>
 
     <!-- Use only for final result -->
     <script src="assets/js/result.js" charset="utf-8"></script>
     <script src="assets/js/vue.min.js" charset="utf-8"></script>
-    <!-- Use only for final result -->
   </body>
 </html>
