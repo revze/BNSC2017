@@ -29,6 +29,8 @@ function sideNav() {
 }
 
 function closeModal(modal)  {
+  $('body').css('overflow-y','auto');
+  $('iframe').remove();
   $('#'+modal).fadeOut(350);
 }
 

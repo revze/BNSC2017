@@ -303,6 +303,9 @@ aside ul li a:hover{
 aside .auth-menu{
   display: none;
 }
+aside .logout-menu{
+  display: none!important;
+}
 /* End declare side navigation CSS */
 
 main{
@@ -712,6 +715,22 @@ footer .social-media .ig:hover > .fa{
   border-radius:2px;
   background:#fff;
 }
+.popup-inner.game{
+  max-width:1050px;
+  width:100%;
+}
+.popup-inner .game-place{
+  height: 400px;
+  overflow: hidden;
+  width: 100%;
+  display: block;
+}
+.popup-inner .leaderboard-frame{
+  width: 100%;
+  height: 400px;
+  display: block;
+  overflow: hidden;
+}
 .popup-inner.login{
   max-width:400px;
   width:90%;
@@ -908,6 +927,12 @@ footer .social-media .ig:hover > .fa{
 
 /* Start declare media screen CSS for smartphone */
 @media only screen and (max-width: 480px) {
+  nav .logout-menu{
+    display: none!important;
+  }
+  aside .logout-menu{
+    display: block!important;
+  }
   .captcha{
     margin: 12px;
     width: 100%;

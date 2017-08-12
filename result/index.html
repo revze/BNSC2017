@@ -12,22 +12,26 @@
   <body>
     <!-- Start game modal section -->
     <div class="popup" data-popup="popup-game" id="popup-game">
-      <div class="popup-inner">
+      <div class="popup-inner game">
         <div class="row">
-          <div class="col-s-12 col-m-9 col-9 no-pad">
-            Game Canvas
+          <div class="col-s-12 col-m-9 col-9 no-pad" id="game-frame">
+            <div class="game-place">
+              <!-- <iframe src="../games/endless-runner/index.html" width="804" height="404"></iframe> -->
+            </div>
           </div>
           <div class="col-s-12 col-m-3 col-3 gray">
-            <h3>Leaderboard</h3>
-            <ul class="leaderboard">
-              <!-- <li>1. Revando (190)</li>
-              <li>2. Superman (180)</li>
-              <li>3. Batman (170)</li>
-              <li>4. Wonder Woman (160)</li>
-              <li>5. Hulk (150)</li> -->
-            </ul>
-            <div class="loading-text">
-              Please wait...
+            <div class="leaderboard-frame">
+              <h3>Leaderboard</h3>
+              <ul class="leaderboard">
+                <!-- <li>1. Revando (190)</li>
+                <li>2. Superman (180)</li>
+                <li>3. Batman (170)</li>
+                <li>4. Wonder Woman (160)</li>
+                <li>5. Hulk (150)</li> -->
+              </ul>
+              <div class="loading-text">
+                Please wait...
+              </div>
             </div>
           </div>
         </div>
@@ -84,7 +88,7 @@
             <div class="row">
               <div class="col-s-12 col-m-12 col-12 pad-bot">
                 <div class="captcha-text">
-                  <img src="assets/img/captcha.png" alt="Captcha Image">
+                  <img src="assets/img/null.png" alt="Captcha Image">
                   <input type="hidden" name="captcha_hash">
                 </div>
               </div>
@@ -150,7 +154,7 @@
                 <div class="row">
                   <div class="col-s-12 col-m-12 col-12 pad-bot">
                     <div class="captcha-text">
-                      <img src="assets/img/captcha.png" alt="Captcha Image">
+                      <img src="assets/img/null.png" alt="Captcha Image">
                       <input type="hidden" name="captcha_hash">
                     </div>
                   </div>
@@ -205,8 +209,9 @@
         <div class="right">
           <ul>
             <li id="search"><a href="javascript:void(0)" class="search"><i class="fa fa-search"></i></a></li>
-            <li class="register-menu"><a href="#!" class="auth" data-popup-open="popup-login">Login</a></li>
-            <li class="login-menu"><a href="#!" class="auth" data-popup-open="popup-register">Register</a></li>
+            <li class="register-menu"><a href="#!" class="auth" onclick="loginUser()">Login</a></li>
+            <li class="login-menu"><a href="#!" class="auth" onclick="registerUser()">Register</a></li>
+            <li class="logout-menu"><a href="#!" class="auth" onclick="logoutUser()">Logout</a></li>
           </ul>
         </div>
       </div>
@@ -228,8 +233,9 @@
           <li><a href="#!"><i class="fa fa-rocket"></i>Banner</a></li>
           <li><a href="#!"><i class="fa fa-image"></i>Gallery</a></li>
           <li><a href="#!"><i class="fa fa-globe"></i>About</a></li>
-          <li class="auth-menu" data-popup-open="popup-login"><a href="#!"><i class="fa fa-sign-in"></i>Login</a></li>
-          <li class="auth-menu" data-popup-open="popup-register"><a href="#!"><i class="fa fa-user-plus"></i>Register</a></li>
+          <li class="auth-menu" onclick="loginUser()"><a href="#!"><i class="fa fa-sign-in"></i>Login</a></li>
+          <li class="auth-menu" onclick="registerUser()"><a href="#!"><i class="fa fa-user-plus"></i>Register</a></li>
+          <li class="logout-menu" onclick="logoutUser()"><a href="#!"><i class="fa fa-sign-out"></i>Logout</a></li>
         </ul>
       </div>
     </aside>

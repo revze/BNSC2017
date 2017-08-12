@@ -37,8 +37,15 @@ let retryBtn;
 let retryBtnText;
 let finalScore;
 
+let apiHost = '../../server/project/public/api/';
+let apiToken = 'ijdasoijds09d098';
+let userId;
+
 //Method that use to draw start screen of game
 function initGame() {
+    if (localStorage.getItem('revUserId') != null) {
+    userId = localStorage.getItem('revUserId');
+  }
   gameArea.start();
   startBackground = new drawBackground(canvasWidth,canvasHeight,"img/bg_back_B.png",0,0,'background');
   startBackground1 = new drawBackground(canvasWidth,canvasHeight,"img/bg_middle_A.png",0,0,'background');
@@ -97,6 +104,7 @@ let gameArea = {
     this.canvas.height = canvasHeight;
     this.context = this.canvas.getContext('2d');
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+    this.canvas.focus();
     this.frameNo = 0;
     this.interval = setInterval(startGameArea, 20);
     // this.interval = setInterval(updateGameArea, 20);
@@ -548,6 +556,28 @@ function initGameStatus() {
     clearInterval(gameArea.interval);
     setTimeout(function () {
       retryGame();
+      if (localStorage.getItem('revUserId') != null) {
+        $.ajaxSetup({
+          headers: { 'api_token': apiToken }
+        });
+        $.ajax({
+          url: apiHost + 'endless-running/save/score',
+          type: 'post',
+          dataType: 'json',
+          data: {
+            user_id: userId,
+            score: score
+          },
+          success:function (data) {
+            if (data.status == 1) {
+              alert(data.message);
+            }
+          },
+          error:function () {
+            console.clear();
+          }
+        });
+      }
       gameArea.interval = setInterval(retryGameArea, 20);
     },250);
     // gameArea.stop();

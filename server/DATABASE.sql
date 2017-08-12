@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 12 Agu 2017 pada 13.14
+-- Generation Time: 12 Agu 2017 pada 16.58
 -- Versi Server: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -63,7 +63,16 @@ INSERT INTO `endless_runnings` (`id`, `score`, `user_id`, `created_at`, `updated
 (2, 40, 2, '2017-08-11 21:31:52', '2017-08-11 21:31:52'),
 (3, 50, 2, '2017-08-11 21:31:57', '2017-08-11 21:31:57'),
 (4, 60, 1, '2017-08-11 21:32:17', '2017-08-11 21:32:17'),
-(5, 60, 1, '2017-08-11 21:35:58', '2017-08-11 21:35:58');
+(5, 60, 1, '2017-08-11 21:35:58', '2017-08-11 21:35:58'),
+(6, 90, 4, '2017-08-12 07:11:37', '2017-08-12 07:11:37'),
+(7, 180, 4, '2017-08-12 07:16:48', '2017-08-12 07:16:48'),
+(8, 90, 4, '2017-08-12 07:17:02', '2017-08-12 07:17:02'),
+(9, 180, 5, '2017-08-12 07:25:25', '2017-08-12 07:25:25'),
+(10, 180, 5, '2017-08-12 07:25:55', '2017-08-12 07:25:55'),
+(11, 90, 5, '2017-08-12 07:26:17', '2017-08-12 07:26:17'),
+(12, 170, 5, '2017-08-12 07:27:40', '2017-08-12 07:27:40'),
+(13, 180, 1, '2017-08-12 07:45:43', '2017-08-12 07:45:43'),
+(14, 90, 1, '2017-08-12 07:47:45', '2017-08-12 07:47:45');
 
 -- --------------------------------------------------------
 
@@ -149,8 +158,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `date_birth`, `phone_number`, `profile_picture`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Revando', 'revze', 'revando@outlook.com', '$2y$10$DwXWTowSWgNQMCTOKpmWM.Wx06LQIcpZl36gomn7Z2VdTpSvQ2xX6', '1999-05-19', '085816865807', 'revze.png', NULL, '2017-08-11 20:43:22', '2017-08-11 20:43:22'),
-(2, 'Revando 2', 'revando', 'dev.revze@gmail.com', '$2y$10$VeF6/8iBKhDhw5RuM.VgSOb00zH4Fmnc9ebHLuoFTGvPoQmo/1cvy', '1999-09-19', '0999999', '1502509911.png', 'l4mLv4DArccyKQz81gHNkadv6SdSxPKErGUcrljF7YZi3Qm6ZSiucT4Iqk0K', '2017-08-11 20:46:28', '2017-08-11 20:51:51');
+(1, 'Revando', 'revze', 'revando@outlook.com', '$2y$10$DwXWTowSWgNQMCTOKpmWM.Wx06LQIcpZl36gomn7Z2VdTpSvQ2xX6', '1999-05-19', '085816865807', 'revze.png', 'jaQcXgqbqhOI9SPCRkS6j4kQUQzYsaP9Hu77Ew8pX30wm1CFnsAItG6C9Yxf', '2017-08-11 20:43:22', '2017-08-11 20:43:22'),
+(2, 'Revando 2', 'revando', 'dev.revze@gmail.com', '$2y$10$VeF6/8iBKhDhw5RuM.VgSOb00zH4Fmnc9ebHLuoFTGvPoQmo/1cvy', '1999-09-19', '0999999', '1502509911.png', 'l4mLv4DArccyKQz81gHNkadv6SdSxPKErGUcrljF7YZi3Qm6ZSiucT4Iqk0K', '2017-08-11 20:46:28', '2017-08-11 20:51:51'),
+(3, 'asdasd', 'sadasd', 'dedyqurnia722@gmail.comasd', '$2y$10$ZOtFZ2aWEJCjNckymSQFqO.1kHXGBWUehQCfbPV/Xoqn2n0UuXH6S', '2017-08-16', '213213', '1502544920.png', NULL, '2017-08-12 06:35:20', '2017-08-12 06:35:20'),
+(4, 'Abri Asyikin', 'abri', 'abri@gmail.com', '$2y$10$2pU7PON03RZxxJlJ2NWuneg.jErOiDm3qcZBkQeeSvbtwaU7B6xr2', '2017-08-23', '9999', '1502545399.jpg', 'gtBGGfndyoyW5Z0T0Nesy2NWvRDjF5WCciDpufDRlDJQrIi8ugJ66zHxqZzr', '2017-08-12 06:43:18', '2017-08-12 06:43:18'),
+(5, 'Erwin', 'erwin', 'erwin@gmail.com', '$2y$10$p/F.Co5ir.1jW397iAcM/ehaWh7GpdGOEcq5yX790a4VZEB4VnS.W', '2017-08-23', '999999', '1502547898.jpg', NULL, '2017-08-12 07:24:58', '2017-08-12 07:24:58'),
+(6, 'Ismail', 'ismail', 'ismail@gmail.com', '$2y$10$X542FqwbY9uAAl8EdUZAoeviMNlx7jE6x.aKjNgrtTKDD/fn5exNK', '2017-08-15', '45454545', '1502549848.jpg', NULL, '2017-08-12 07:57:28', '2017-08-12 07:57:28');
 
 --
 -- Indexes for dumped tables
@@ -201,7 +214,7 @@ ALTER TABLE `api_tokens`
 -- AUTO_INCREMENT for table `endless_runnings`
 --
 ALTER TABLE `endless_runnings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
@@ -216,7 +229,7 @@ ALTER TABLE `tetris`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --

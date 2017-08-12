@@ -1,4 +1,5 @@
 let apiHost = '../server/project/public/api/';
+// let apiHost = 'http://localhost:8000/api/';
 let apiToken = 'ijdasoijds09d098';
 let apiLogin = apiHost + 'login';
 let apiRegister = apiHost + 'register';
@@ -15,19 +16,36 @@ function checkAuth() {
   let registerMenu = $('.register-menu');
   let loginMenu = $('.login-menu');
   let gamePopup = $('.popup');
+  let sideRegisterMenu = $('aside').find('.auth-menu');
+  let logoutMenu = $('.logout-menu');
 
-  if (localStorage.getItem('userLogin') == "true" || localStorage.getItem('userLogin') == true) {
+  if (localStorage.getItem('revUserLogin') == "true" || localStorage.getItem('revUserLogin') == true) {
     registerMenu.css('display','none');
     loginMenu.css('display','none');
+    sideRegisterMenu.css('display','none');
+    logoutMenu.css('display','block');
   }
   else {
     registerMenu.removeAttr('style');
     loginMenu.removeAttr('style');
+    sideRegisterMenu.removeAttr('style');
+    logoutMenu.css('display','none');
   }
 }
 
+function logoutUser() {
+  localStorage.clear();
+  checkAuth();
+}
+
 function playGame(game)  {
-  if (localStorage.getItem('userLogin') == "true" || localStorage.getItem('userLogin') == true) {
+  if (localStorage.getItem('revUserLogin') == "true" || localStorage.getItem('revUserLogin') == true) {
+    let gameIframe = $('<iframe>');
+    gameIframe.attr('width','804');
+    gameIframe.attr('height','404');
+    $('.game-place').append(gameIframe);
+
+    $('body').css('overflow-y','hidden');
     $('#popup-game').fadeIn(350);
     $('#popup-game').find('.leaderboard').html('');
     $('#popup-game').find('.loading-text').removeClass('none');
@@ -35,6 +53,7 @@ function playGame(game)  {
 
     setTimeout(function() {
       if (game == 'Endless Runner') {
+        gameIframe.attr('src','../games/endless-runner');
         $.ajax({
           url: apiEndlessRunningLeaderboard,
           type: 'get',
@@ -61,6 +80,7 @@ function playGame(game)  {
         });
       }
       else if (game == 'Tetris') {
+        gameIframe.attr('src','../games/tetris');
         $.ajax({
           url: apiTetrisLeaderboard,
           type: 'get',
@@ -123,12 +143,13 @@ function registerSuccessResponse(user_id) {
   $('#register-form').find('.alert').removeClass('none');
   $('#register-form').find('.alert').addClass('teal');
   $('#register-form').find('.alert').html('Registration success.');
-  localStorage.setItem('userId', user_id);
-  localStorage.setItem('userLogin', true);
+  localStorage.setItem('revUserId', user_id);
+  localStorage.setItem('revUserLogin', true);
   $('#register-form').find('.error').html('');
   setTimeout(function () {
-    closeModal('popup-register');
-    checkAuth();
+    window.location.href = '';
+    // closeModal('popup-register');
+    // checkAuth();
   },1000);
 }
 
@@ -147,11 +168,12 @@ function loginSuccessResponse(user_id) {
   $('#login-form').find('.alert').removeClass('none');
   $('#login-form').find('.alert').addClass('teal');
   $('#login-form').find('.alert').html('Authentication success.');
-  localStorage.setItem('userId', user_id);
-  localStorage.setItem('userLogin', true);
+  localStorage.setItem('revUserId', user_id);
+  localStorage.setItem('revUserLogin', true);
   setTimeout(function () {
-    closeModal('popup-login');
-    checkAuth();
+    window.location.href = '';
+    // closeModal('popup-login');
+    // checkAuth();
   },1000);
 }
 
@@ -280,6 +302,7 @@ $(document).ready(function () {
   });
 
   $('#register-form').on('submit', function (e) {
+    let formData = new FormData(this);
     e.preventDefault();
     let captchaLogin = $(this).find('input[name=captcha_hash]').val();
     let captchaLoginUser = $(this).find('input[name=input_user]').val();
@@ -298,38 +321,48 @@ $(document).ready(function () {
           alert("Your input does not match with captcha image.");
           $('#register-form').find('.submit').html('Register');
           $('#register-form').find('.submit').prop('disabled',false);
-          return;
         }
 
-        $.ajax({
-          url: apiRegister,
-          type: 'post',
-          dataType: 'json',
-          data: new FormData(this),
-          cache:false,
-          contentType: false,
-          processData: false,
-          success:function (data) {
-            if (data.status == 1) {
-              registerSuccessResponse(data.message.user_id);
-            }
-            else {
-              $('#register-form').animate({
-                scrollTop: $('#register-form').find('.error').offset().top
-              }, 1500);
-              $('#register-form').find('.error').html('');
-              for (var i = 0; i < data.message.validation_error.length; i++) {
-                let errorMsg = $('<div class="alert">');
-                errorMsg.html(data.message.validation_error[i]);
-                $('#register-form').find('.error').append(errorMsg);
+        else {
+          $.ajax({
+            url: apiRegister,
+            type: 'post',
+            dataType: 'json',
+            // data: {
+            //   name: $('#name_register').val(),
+            //   username: $('#username_register').val(),
+            //   email: $('#email_register').val(),
+            //   password: $('#password_register').val(),
+            //   date_birth: $('#date_birth_register').val(),
+            //   phone_number: $('#phone_number_register').val(),
+            //   photo: $('#photo_register').val(),
+            // },
+            data: formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success:function (data) {
+              if (data.status == 1) {
+                registerSuccessResponse(data.message.user_id);
               }
-              registerFailResponse();
+              else {
+                $('#register-form').animate({
+                  scrollTop: $('#register-form').find('.error').offset().top
+                }, 1500);
+                $('#register-form').find('.error').html('');
+                for (var i = 0; i < data.message.validation_error.length; i++) {
+                  let errorMsg = $('<div class="alert">');
+                  errorMsg.html(data.message.validation_error[i]);
+                  $('#register-form').find('.error').append(errorMsg);
+                }
+                registerFailResponse();
+              }
+            },
+            error: function () {
+              console.clear();
             }
-          },
-          error: function () {
-            console.clear();
-          }
-        });
+          });
+        }
       },
       error:function () {
         console.clear();
