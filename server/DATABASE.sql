@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 13 Agu 2017 pada 09.44
+-- Generation Time: 13 Agu 2017 pada 12.21
 -- Versi Server: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -62,7 +62,8 @@ CREATE TABLE `endless_runnings` (
 
 INSERT INTO `endless_runnings` (`id`, `score`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 260, 1, '2017-08-13 00:30:45', '2017-08-13 00:30:45'),
-(2, 260, 2, '2017-08-13 00:31:58', '2017-08-13 00:31:58');
+(2, 260, 2, '2017-08-13 00:31:58', '2017-08-13 00:31:58'),
+(3, 180, 1, '2017-08-13 03:05:49', '2017-08-13 03:05:49');
 
 -- --------------------------------------------------------
 
@@ -136,7 +137,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `date_birth`, `phone_number`, `profile_picture`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Revando', 'revze', 'revando@outlook.com', '$2y$10$1f.gJdjZq3wjPVXS7T6/KOI19iQgcEKnnueTDliQzCGvep/mChYLG', '1999-05-19', '085816865807', 'revze.png', 'Dt3smO1c6cKeeniU40t415GnRVIuAi5ePjYQvDQQDB2iNfDPeymcnMbI0K56', '2017-08-13 00:20:16', '2017-08-13 00:20:16'),
-(2, 'Friezky', 'friezky', 'friezky@gmail.com', '$2y$10$nxNDXhBxs6ftF8FsARe9SePggJHHDTXTj4oWevwu7J2xmG1olRCaC', '2017-08-24', '12121213', '1502609479.png', 'zHgTSQIqfcOkdge4OJN4S1qH735Xm8OU9WV37fh7KVXvdZkqXWdFalIIvIHS', '2017-08-13 00:31:19', '2017-08-13 00:31:19');
+(2, 'Friezky', 'friezky', 'friezky@gmail.com', '$2y$10$nxNDXhBxs6ftF8FsARe9SePggJHHDTXTj4oWevwu7J2xmG1olRCaC', '2017-08-24', '12121213', '1502609479.png', 'zHgTSQIqfcOkdge4OJN4S1qH735Xm8OU9WV37fh7KVXvdZkqXWdFalIIvIHS', '2017-08-13 00:31:19', '2017-08-13 00:31:19'),
+(3, 'Revan Ceballos', 'ceballos', 'ceballos@gmail.com', '$2y$10$NQayPs6BEnN7BH8jqNl/J.jCCNAzWMcT1rtnxK0jkf/VpVBclgFOi', '2017-08-04', '123213', '1502619544.jpg', NULL, '2017-08-13 03:19:03', '2017-08-13 03:19:03');
 
 --
 -- Indexes for dumped tables
@@ -187,7 +189,7 @@ ALTER TABLE `api_tokens`
 -- AUTO_INCREMENT for table `endless_runnings`
 --
 ALTER TABLE `endless_runnings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
@@ -202,7 +204,7 @@ ALTER TABLE `tetris`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --

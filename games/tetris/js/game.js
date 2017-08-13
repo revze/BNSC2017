@@ -1,94 +1,181 @@
-let canvasWidth = 800;
-let canvasHeight = 400;
+let COLS = 10, ROWS = 20;
+let board = [];
+let lose;
+let interval;
+let current; //current moving shape
+let currentX, currentY;
+let shapes = [
+  [1, 1, 1, 1],
+  [1, 1, 1, 0, 1],
+  [1, 1, 1, 0, 0, 0, 1],
+  [1, 1, 0, 0, 1, 1],
+  [1, 1, 0, 0, 0, 1, 1],
+  [0, 1, 1, 0, 1, 1],
+  [0, 1, 0, 0, 1, 1, 1]
+];
+let colors = [
+  'cyan', 'orange', 'blue', 'yellow', 'red', 'green', 'purple'
+];
 
-let background;
+// create a new 4x4 shape in global variable 'current'
+// 4x4 so as to cover the size when the shape is rotated
+function newShape() {
+  let id = Math.floor(Math.random() * shapes.length);
+  let shape = shapes[id];
 
-//Method that use to draw start screen of game
-function initGame() {
-  gameArea.start();
-  background = new drawBackground(canvasWidth,canvasHeight,"black",0,0,'');
-}
-
-//Initialize object that use to frame and keyboard control in game
-let gameArea = {
-  canvas: document.createElement('canvas'),
-  start: function () {
-    this.canvas.width = canvasWidth;
-    this.canvas.height = canvasHeight;
-    this.context = this.canvas.getContext('2d');
-    document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-    this.canvas.focus();
-    this.frameNo = 0;
-    this.interval = setInterval(startGameArea, 20);
-    // this.interval = setInterval(updateGameArea, 20);
-  },
-  clear: function () {
-    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  },
-  stop: function () {
-    clearInterval(this.interval);
-  }
-}
-
-// Method that use to draw background in game
-function drawBackground(width, height, color, x, y, type) {
-  this.gamearea = gameArea;
-  this.type = type;
-  if (type == 'image' || type == 'background') {
-    this.image = new Image();
-    this.image.src = color;
-  }
-  this.width = width;
-  this.height = height;
-  this.speedX = 0;
-  this.speedY = 0;
-  this.x = x;
-  this.y = y;
-  this.update = function() {
-    ctx = gameArea.context;
-    if (type == 'image' || type == 'background') {
-      ctx.drawImage(this.image,
-        this.x,
-        this.y,
-        this.width, this.height);
-
-        if (type == 'background') {
-          ctx.drawImage(this.image,
-            this.x + this.width,
-            this.y,
-            this.width, this.height);
-        }
-    }
-    else {
-      ctx.fillStyle = color;
-      ctx.fillRect(this.x, this.y, this.width, this.height);
-    }
-  }
-  this.newPos = function() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-    if (this.type == 'background') {
-      if (this.x == -(this.width)) {
-        this.x = 0;
+  current = [];
+  for (let y = 0; y < 4; y++) {
+    current[y] = [];
+    for (let x = 0; x < 4; x++) {
+      let i = 4 * y + x;
+      if (typeof shape[i] != 'undefined' && shape[i]) {
+        current[y][x] = id + 1;
+      }
+      else {
+        current[y][x] = 0;
       }
     }
   }
-  this.clicked = function () {
-    let myleft = this.x;
-    let myright = this.x + (this.width);
-    let mytop = this.y;
-    let mybottom = this.y + (this.height);
-    var clicked = true;
-    if ((mybottom < gameArea.y) || (mytop > gameArea.y) || (myright < gameArea.x) || (myleft > gameArea.x)) {
-      clicked = false;
+
+  // position where the shape will evolve
+  currentX = 5;
+  currentY = 0;
+}
+
+// clears the board
+function init() {
+  for (let y = 0; y < ROWS; y++) {
+    board[y] = [];
+    for (let x = 0; x < COLS; x++) {
+      board[y][x] = 0;
     }
-    return clicked;
   }
 }
 
-// Method that use to draw start screen in game
-function startGameArea() {
-  gameArea.clear();
-  background.newPos();
-  background.update();
+// keep the element moving down, creating new shapes and clearing lines
+function tick() {
+  if (valid(0, 1)) {
+    currentY++;
+  }
+
+  //if the element settled
+  else {
+    freeze();
+    clearLines();
+    if (lose) {
+      newGame();
+      return false;
+    }
+    newShape();
+  }
 }
+
+// stop shape at its position and fix it to board
+function freeze() {
+  for (let y = 0; y < 4; y++) {
+    for (let x = 0; x < 4; x++) {
+      if (current[y][x]) {
+        board[y + currentY][x + currentX] = current[y][x];
+      }
+    }
+  }
+}
+
+// returns rotates the rotated shape 'current' perpendicularly anticlockwise
+function rotate(current) {
+  let newCurrent = [];
+  for (let y = 0; y < 4; y++) {
+    newCurrent[y] = [];
+    for (let x = 0; x < 4; x++) {
+      newCurrent[y][x] = current[3 - x][y];
+    }
+  }
+
+  return newCurrent;
+}
+
+//check if any lines are filled and clear them
+function clearLines() {
+  for (let y = ROWS - 1; y >= 0; y--) {
+    let rowFilled = true;
+    for (let x = 0; x < COLS; x++) {
+      if (board[y][x] == 0) {
+        rowFilled = false;
+        break;
+      }
+    }
+    if (rowFilled) {
+      for (let yy = y; yy > 0; yy--) {
+        for (let x = 0; x < COLS; x++) {
+          board[yy][x] = board[yy - 1][x];
+        }
+      }
+      y++;
+    }
+  }
+}
+
+// Use to controll current shape
+function keyPress(key) {
+  switch (key) {
+    case 'left':
+      if (valid(-1)) {
+        currentX--;
+      }
+      break;
+    case 'right':
+      if (valid(1)) {
+        currentX++;
+      }
+      break;
+    case 'down':
+      if (valid(0,1)) {
+        currentY++;
+      }
+      break;
+    case 'rotate':
+      let rotated = rotate(current);
+      if (valid(0, 0, rotated)) {
+        current = rotated;
+      }
+      break;
+  }
+}
+
+// checks if the resulting position of current shape will be feasible
+function valid(offsetX, offsetY, newCurrent) {
+  offsetX = offsetX || 0;
+  offsetY = offsetY || 0;
+  offsetX = currentX + offsetX;
+  offsetY = currentY + offsetY;
+  newCurrent = newCurrent || current;
+
+  for (let y = 0; y < 4; y++) {
+    for (let x = 0; x < 4; x++) {
+      if (newCurrent[y][x]) {
+        if (typeof board[y + offsetY] == 'undefined'
+          || typeof board[y + offsetY][x + offsetX] == 'undefined'
+          || board[y + offsetY][x + offsetX]
+          || x + offsetX < 0
+          || y + offsetY >= ROWS
+          || x + offsetX >= COLS) {
+            if (offsetY == 1) lose = true;
+            return false;
+        }
+      }
+    }
+  }
+
+  return true;
+}
+
+// Use to to start new game
+function newGame() {
+  clearInterval(interval);
+  init();
+  newShape();
+  lose = false;
+  interval = setInterval(tick, 250);
+}
+
+newGame();

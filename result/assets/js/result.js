@@ -47,6 +47,9 @@ function playGame(game)  {
     gameIframe.attr('width','804');
     gameIframe.attr('height','404');
     $('.game-place').append(gameIframe);
+    gameIframe.focus();
+    gameIframe.css('border','none');
+    gameIframe.css('background-color', '#EEEEEE');
 
     $('body').css('overflow-y','hidden');
     $('#popup-game').fadeIn(350);
@@ -184,7 +187,7 @@ function loginFailResponse() {
   $('#login-form').find('.submit').html('Login');
   $('#login-form').find('.submit').prop('disabled',false);
   $('#login-form').find('.alert').removeClass('none');
-  $('#login-form').find('.alert').html('Authentication failed.');
+  $('#login-form').find('.alert').html('Username or password does not match.');
 }
 
 function readURL(input) {

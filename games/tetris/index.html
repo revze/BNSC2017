@@ -4,16 +4,18 @@
     <meta charset="utf-8">
     <title>Tetris</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <style>
-      body{
-        margin: 0;
-      }
-      canvas {
-        display: block;
-      }
-    </style>
+    <link rel="stylesheet" href="css/game.css">
   </head>
-  <body onload="initGame()">
+  <body>
+    <canvas width="400" height="400"></canvas>
     <script src="js/game.js" charset="utf-8"></script>
+    <script src="js/controller.js" charset="utf-8"></script>
+    <script src="js/render.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      //This line is use to make interaction focus to canvas
+      document.body.onload = function() {
+        document.getElementsByTagName('canvas')[0].focus();
+      }
+    </script>
   </body>
 </html>
