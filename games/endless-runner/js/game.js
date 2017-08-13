@@ -205,6 +205,7 @@ function drawDragon(type, width, height, color, x, y, spriteX, spriteY, spriteWi
   this.spriteY = spriteY;
   this.spriteWidth = spriteWidth;
   this.spriteHeight = spriteHeight;
+  this.layer = 'top';
   this.update = function() {
     ctx = gameArea.context;
     if (this.type == 'image') {
@@ -496,9 +497,53 @@ function initCoin() {
   }
 
   for (let i = 0; i < coin.length; i++) {
+    if (coin[i].spriteX == 0) {
+      setTimeout(function () {
+        coin[i].spriteX = 34;
+        coin[i].spriteWidth = 30;
+      },120);
+    }
+    else if (coin[i].spriteX == 34) {
+      setTimeout(function () {
+        coin[i].spriteX = 68;
+        coin[i].spriteWidth = 30;
+      },120);
+    }
+    else if (coin[i].spriteX == 68) {
+      setTimeout(function () {
+        coin[i].spriteX = 134;
+        coin[i].spriteWidth = 30;
+      },120);
+    }
+    else if (coin[i].spriteX == 134) {
+      setTimeout(function () {
+        coin[i].spriteX = 164;
+        coin[i].spriteWidth = 30;
+      },120);
+    }
+    else if (coin[i].spriteX == 164) {
+      setTimeout(function () {
+        coin[i].spriteX = 194;
+        coin[i].spriteWidth = 30;
+      },120);
+    }
+    else if (coin[i].spriteX == 194) {
+      setTimeout(function () {
+        coin[i].spriteX = 227;
+        coin[i].spriteWidth = 30;
+      },120);
+    }
+    else if (coin[i].spriteX == 227) {
+      setTimeout(function () {
+        coin[i].spriteX = 0;
+        coin[i].spriteWidth = 30;
+      },120);
+    }
+
     coin[i].speedX = -2;
     coin[i].newPos();
     coin[i].update();
+
   }
 
   for (let i = 0; i < coin.length; i++) {
@@ -526,20 +571,83 @@ function initDragon() {
     }
   }
 
+  // For sprite 2
   // if (dragon.spriteX == 0) {
   //   setTimeout(function () {
-  //     dragon.spriteX = 480;
-  //     dragon.spriteWidth = 240;
-  //     dragon.spriteHeight = 230;
-  //   },250);
-  // }
-  // else if (dragon.spriteX == 480) {
-  //   setTimeout(function () {
   //     dragon.spriteX = 0;
-  //     dragon.spriteWidth = 225;
-  //     dragon.spriteHeight = 220;
+  //     dragon.spriteY = 240;
+  //     dragon.spriteWidth = 250;
+  //     dragon.spriteHeight = 246;
   //   },250);
   // }
+
+  if (dragon.spriteX == 0 && dragon.layer == 'top') {
+    setTimeout(function () {
+      dragon.spriteX = 250;
+      dragon.spriteWidth = 250;
+    },80);
+  }
+  else if (dragon.spriteX == 250 && dragon.layer == 'top') {
+    setTimeout(function () {
+      dragon.spriteX = 502;
+      dragon.spriteWidth = 262;
+    },80);
+  }
+  else if (dragon.spriteX == 502 && dragon.layer == 'top') {
+    setTimeout(function () {
+      dragon.spriteX = 764;
+      dragon.spriteWidth = 254;
+    },80);
+  }
+  else if (dragon.spriteX == 764 && dragon.layer == 'top') {
+    setTimeout(function () {
+      dragon.spriteX = 1016;
+      dragon.spriteWidth = 258;
+    },80);
+  }
+  else if (dragon.spriteX == 1016 && dragon.layer == 'top') {
+    setTimeout(function () {
+      dragon.spriteX = 0;
+      dragon.spriteY = 240;
+      dragon.spriteWidth = 250;
+      dragon.spriteHeight = 246;
+      dragon.layer = 'bottom';
+    },80);
+  }
+  else if (dragon.spriteX == 0 && dragon.layer == 'bottom') {
+    setTimeout(function () {
+      dragon.spriteX = 250;
+      dragon.spriteWidth = 250;
+    },80);
+  }
+  else if (dragon.spriteX == 250 && dragon.layer == 'bottom') {
+    setTimeout(function () {
+      dragon.spriteX = 502;
+      dragon.spriteWidth = 256;
+    },80);
+  }
+  else if (dragon.spriteX == 502 && dragon.layer == 'bottom') {
+    setTimeout(function () {
+      dragon.spriteX = 764;
+      dragon.spriteWidth = 256;
+    },80);
+  }
+  else if (dragon.spriteX == 764 && dragon.layer == 'bottom') {
+    setTimeout(function () {
+      dragon.spriteX = 1016;
+      dragon.spriteWidth = 256;
+    },80);
+  }
+  else if (dragon.spriteX == 1016 && dragon.layer == 'bottom') {
+    setTimeout(function () {
+      dragon.spriteX = 0;
+      dragon.spriteY = 0;
+      dragon.spriteWidth = 250;
+      dragon.spriteHeight = 240;
+      dragon.layer = 'top';
+    },80);
+  }
+
   dragon.newPos();
   dragon.update();
 }
