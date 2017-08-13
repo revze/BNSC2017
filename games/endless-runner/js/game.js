@@ -76,7 +76,7 @@ function startGame() {
   bgTop2 = new drawBackground(canvasWidth,canvasHeight,"img/bg_superfront_B.png",0,0,'background');
   bgTop3 = new drawBackground(canvasWidth,canvasHeight,"img/bg_superfront_C.png",0,0,'background');
 
-  dragon = new drawDragon('image', 90, 85, "img/dragon.png.", 10, 120, 0, 0, 250, 240);
+  dragon = new drawDragon('image', 90, 85, "img/dragon.png", 10, 120, 0, 0, 250, 240);
 
   lifeText = new drawText('20px', 'Arial', '#fff', 30, 40);
   scoreText = new drawText('20px', 'Arial', '#fff', 110, 40);
